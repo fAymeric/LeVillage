@@ -9,11 +9,15 @@ SOURCES += \
         character.cpp \
         city.cpp \
         game.cpp \
-        main.cpp
+        main.cpp \
+        player.cpp \
+        wizzard.cpp
 
 HEADERS += \
     auberge.h \
     building.h \
     character.h \
     city.h \
-    game.h
+    game.h \
+    player.h \
+    wizzard.h
