@@ -1,14 +1,9 @@
-#include "game.cpp"
-#include "game.h"
-#include "player.cpp"
-#include "player.h"
-#include "character.h"
-
+#include <iostream>
 
 using namespace std;
 
 int main()
 {
-    Character go to village;
-
+    cout << "Hello World!" << endl;
+    return 0;
 }
