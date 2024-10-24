@@ -7,9 +7,13 @@ SOURCES += \
         auberge.cpp \
         building.cpp \
         character.cpp \
+        city.cpp \
+        game.cpp \
         main.cpp
 
 HEADERS += \
     auberge.h \
     building.h \
-    character.h
+    character.h \
+    city.h \
+    game.h
