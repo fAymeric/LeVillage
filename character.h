@@ -11,6 +11,7 @@ class Character
     int m_health;
     int m_gold;
     int m_defense;
+    const int m_maxHealth ;
 public:
     Character();
 
@@ -20,6 +21,8 @@ public:
     void SetAttack(int attack);
 
     void SetHealth(int health);
+
+    const int SetMaxHealt(int maxHealth);
 
     void SetGold(int Gold);
 

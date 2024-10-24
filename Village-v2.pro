@@ -10,6 +10,7 @@ SOURCES += \
         city.cpp \
         game.cpp \
         main.cpp \
+        mine.cpp \
         player.cpp \
         wizzard.cpp
 
@@ -19,5 +20,6 @@ HEADERS += \
     character.h \
     city.h \
     game.h \
+    mine.h \
     player.h \
     wizzard.h
