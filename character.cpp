@@ -54,6 +54,9 @@ int Character::GetDefense()
 void Character::DisplayInformations(){
     cout<< "Your name : "<<m_name<<endl;
     cout << "Your health : "<< m_health <<endl;
+    cout << "Your attack : "<<m_attack<<endl;
+    cout << "Your defense : "<<m_defense<<endl;
+    cout << "Your gold : "<<m_gold<<endl;
 }
 
 

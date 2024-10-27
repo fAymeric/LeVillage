@@ -11,7 +11,9 @@ SOURCES += \
         game.cpp \
         main.cpp \
         mine.cpp \
+        paladin.cpp \
         player.cpp \
+        warrior.cpp \
         wizzard.cpp
 
 HEADERS += \
@@ -21,5 +23,7 @@ HEADERS += \
     city.h \
     game.h \
     mine.h \
+    paladin.h \
     player.h \
+    warrior.h \
     wizzard.h

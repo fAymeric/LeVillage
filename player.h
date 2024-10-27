@@ -6,12 +6,15 @@ using namespace std;
 
 class Player : public Character
 {
+protected:
+
+public:
     string m_classe;
     int m_classeInt;
-public:
     Player();
     void setRandStats();
-
+    void setClasse(string classe);
+    void setClasseInt(int classeInt);
     void displayInformations();
 };
 

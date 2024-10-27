@@ -6,8 +6,8 @@ using namespace std;
 Wizzard::Wizzard() {
     m_name = "Wizzard";
     m_attack = 5;
-    m_health = 100;
-    m_gold = 10;
+    m_health = 120;
+    m_gold = 30;
     m_defense = 5;
 }
 
