@@ -6,12 +6,13 @@ using namespace std;
 
 class Character
 {
+protected:
     string m_name;
     int m_attack;
     int m_health;
     int m_gold;
     int m_defense;
-    const int m_maxHealth ;
+    int m_maxHealth;
 public:
     Character();
 
@@ -22,11 +23,25 @@ public:
 
     void SetHealth(int health);
 
-    const int SetMaxHealt(int maxHealth);
+    void SetMaxHealt(int maxHealth);
 
     void SetGold(int Gold);
 
     void SetDefense(int Defense);
+
+    string GetName();
+
+    int GetAttack();
+
+    int GetHealth();
+
+    int GetMaxHealt();
+
+    int GetGold();
+
+    int GetDefense();
+
+    void DisplayInformations();
 };
 
 #endif // CHARACTER_H

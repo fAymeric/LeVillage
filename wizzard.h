@@ -1,13 +1,16 @@
 #ifndef WIZZARD_H
 #define WIZZARD_H
 
-class Wizzard
+#include "player.h"
+
+
+class Wizzard: public Player
 {
-    int m_dodge;
+    // int m_dodge;
 public:
     Wizzard();
-    void Dodge();
-    void setDodge(int dodgingNbr);
+   // void Dodge();
+   // void setDodge(int dodgingNbr);
 };
 
 #endif // WIZZARD_H
