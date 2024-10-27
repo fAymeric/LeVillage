@@ -12,9 +12,9 @@ int main()
     string classe;
     while(1){
         cout<<"hello adveturer its time to choose your class..."<<endl;
-        cout<<"Warrior : 1"<<endl;
-        cout<<"Wizzard : 2"<<endl;
-        cout<<"Paladin : 3"<<endl;
+        cout<<"Warrior : 1"<< endl;
+        cout<<"Wizzard : 2"<< endl;
+        cout<<"Paladin : 3"<< endl;
         cin >> classe;
         if (classe == "Warrior" || classe == "Wizzard" || classe == "Paladin" || classe == "1" || classe == "2" || classe == "3"){
             if (classe == "Warrior" || classe == "1"){
