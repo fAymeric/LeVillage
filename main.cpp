@@ -45,5 +45,24 @@ int main()
         Paladin Perso1;
         Perso1.DisplayInformations();
     }
+    ShowVillage();
+    PlayerGoIntoVillage();
+    PlayerEnterMine
+    MineShowInside();
+    hitCharacter(Player, Monster);
+    hitCharacter(Monster, Player);
+    hitCharacter(Player, Monster);
+    PlayerLeaveMine();
+    PlayerEnterMerchant();
+    MerchantShowProduct();
+    PlayerBuyProduct();
+    PlayerLeaveMerchant();
+    PlayerTakeSword();
+    PlayerGoHostel();
+    HostelShowPrice();
+    PlayerRest();
+    PlayerLeaveHostel();
+    PlayerLeaveVillage();
+    PlayerDrunkPotions(),
 
 }
