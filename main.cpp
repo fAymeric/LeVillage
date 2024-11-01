@@ -8,8 +8,8 @@ using namespace std;
 
 int main()
 {
-    int classeInt;
     string classe;
+    Player* Perso1 = nullptr;
     while(1){
         cout<<"hello adveturer its time to choose your class..."<<endl;
         cout<<"Warrior : 1"<< endl;
@@ -18,31 +18,33 @@ int main()
         cin >> classe;
         if (classe == "Warrior" || classe == "Wizzard" || classe == "Paladin" || classe == "1" || classe == "2" || classe == "3"){
             if (classe == "Warrior" || classe == "1"){
-                classeInt = 1;
+                Perso1 = new Warrior();
                 break;
             }
             if (classe == "Wizzard" || classe == "2"){
-                classeInt = 2;
+                Perso1 = new Wizzard();
                 break;
             }
             if (classe == "Paladin" || classe == "3"){
-                classeInt = 3;
+                Perso1 = new Paladin();
                 break;
             }
         }
     }
-    if (classeInt == 1){
-        Warrior Perso1;
-        Perso1.DisplayInformations();
-    }
-    if (classeInt == 2){
-        Wizzard Perso1;
 
-        Perso1.DisplayInformations();
-    }
-    if (classeInt == 3){
 
-        Paladin Perso1;
-        Perso1.DisplayInformations();
+    potion potion1;
+    if (Perso1 != nullptr) {
+        Perso1->DisplayInformations();
+        potion potion1;
+        Perso1->usePotion(potion1);
+        Perso1->DisplayInformations();
+        Perso1->usePotion(potion1);
+        Perso1->DisplayInformations();
+        Perso1->usePotion(potion1);
+        Perso1->DisplayInformations();
+
+
+        delete Perso1;
     }
 }

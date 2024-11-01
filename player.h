@@ -1,6 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "character.h"
+#include "potion.h"
 #include <string>
 using namespace std;
 
@@ -20,6 +21,7 @@ public:
     void setClasse(string classe);
     void setClasseInt(int classeInt);
     void displayInformations();
+    void usePotion(potion &potion);
 
 };
 
