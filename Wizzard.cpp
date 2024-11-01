@@ -1,5 +1,5 @@
 #include <cstdlib>
-#include "wizzard.h"
+#include "Wizzard.h"
 
 using namespace std;
 

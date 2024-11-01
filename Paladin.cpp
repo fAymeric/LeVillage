@@ -1,4 +1,4 @@
-#include "paladin.h"
+#include "Paladin.h"
 
 Paladin::Paladin() {
     m_name = "Paladin";

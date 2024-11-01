@@ -1,15 +1,15 @@
-#include "potion.h"
+#include "Potion.h"
 
 
-void potion::setHeal(int heal){
+void Potion::setHeal(int heal){
     m_heal= heal;
 }
 
-int potion::getHeal(){
+int Potion::getHeal(){
     return m_heal;
 }
 
-potion::potion() {
+Potion::Potion() {
     m_name = "Heal potion";
     m_heal = 50;
     m_price = 30;

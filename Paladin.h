@@ -1,7 +1,7 @@
 #ifndef PALADIN_H
 #define PALADIN_H
 
-#include "player.h"
+#include "Player.h"
 class Paladin : public Player
 {
 

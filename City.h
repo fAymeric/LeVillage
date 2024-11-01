@@ -1,10 +1,10 @@
 #ifndef CITY_H
 #define CITY_H
 
-class city
+class City
 {
 public:
-    city();
+    City();
 };
 
 #endif // CITY_H

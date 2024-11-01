@@ -1,11 +1,11 @@
 #ifndef AUBERGE_H
 #define AUBERGE_H
 
-class auberge
+class Auberge
 {
     int m_resetLife;
 public:
-    auberge();
+    Auberge();
 
     void resetFullLife();
 };

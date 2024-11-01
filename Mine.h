@@ -1,10 +1,10 @@
 #ifndef MINE_H
 #define MINE_H
 
-class mine
+class Mine
 {
 public:
-    mine();
+    Mine();
 };
 
 #endif // MINE_H

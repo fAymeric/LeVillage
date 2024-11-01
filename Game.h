@@ -1,10 +1,10 @@
 #ifndef GAME_H
 #define GAME_H
 
-class game
+class Game
 {
 public:
-    game();
+    Game();
     int GameStart();
 };
 

@@ -1,11 +1,11 @@
-#include "game.h"
+#include "Game.h"
 #include<iostream>
 
 using namespace std;
 
-game::game() {}
+Game::Game() {}
 
-int game::GameStart(){
+int Game::GameStart(){
     int classNumber;
     for(;;){
         cout << "Hello adventurer... Choose your class to begin your adventure" << endl;

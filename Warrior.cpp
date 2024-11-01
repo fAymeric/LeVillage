@@ -1,4 +1,4 @@
-#include "warrior.h"
+#include "Warrior.h"
 
 Warrior::Warrior() {
     m_name = "Warrior";

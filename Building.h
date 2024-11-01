@@ -1,10 +1,10 @@
 #ifndef BUILDING_H
 #define BUILDING_H
 
-class building
+class Building
 {
 public:
-    building();
+    Building();
 };
 
 #endif // BUILDING_H

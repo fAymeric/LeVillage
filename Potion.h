@@ -1,13 +1,13 @@
 #ifndef POTION_H
 #define POTION_H
 
-#include "item.h"
+#include "Item.h"
 
-class potion : public Item
+class Potion : public Item
 {
 public:
     int m_heal;
-    potion();
+    Potion();
     void setHeal(int heal);
     int getHeal();
 };

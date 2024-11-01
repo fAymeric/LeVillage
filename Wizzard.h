@@ -1,7 +1,7 @@
 #ifndef WIZZARD_H
 #define WIZZARD_H
 
-#include "player.h"
+#include "Player.h"
 
 
 class Wizzard: public Player
