@@ -9,7 +9,7 @@ class Player : public Character
 
 protected:
 
-    Shield* m_shield = nullptr;
+
 
 public:
 
@@ -20,10 +20,6 @@ public:
     void setClasse(string classe);
     void setClasseInt(int classeInt);
     void displayInformations();
-    void dropShield();
-    void takeShield(Shield* ptr_shield);
-    void dropSword();
-    void takeSword(Sword* ptr_sword);
 
 };
 

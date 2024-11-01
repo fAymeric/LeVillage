@@ -59,8 +59,4 @@ void Character::DisplayInformations(){
     cout << "Your gold : "<<m_gold<<endl;
 };
 
-void HitCharactere(Character* ptr_attacker,Character* ptr_receiver){
-    ptr_receiver->m_health -= ptr_attacker->GetAttack()
-};
-
 
