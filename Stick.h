@@ -1,7 +1,9 @@
 #ifndef STICK_H
 #define STICK_H
 
-class Stick
+#include "Weapon.h"
+
+class Stick: public Weapon
 {
 public:
     Stick();
