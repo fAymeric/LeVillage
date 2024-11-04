@@ -2,6 +2,7 @@
 #define CITY_H
 #include <string>
 using namespace std;
+
 class City
 {
     string m_cityName;
@@ -13,7 +14,6 @@ public:
     void setCityName(string cityName);
     string getCityName();
     void getRandName();
-    void getName();
 };
 
 #endif // CITY_H

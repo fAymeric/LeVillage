@@ -24,6 +24,7 @@ public:
     void carrySword (Sword& sword);
     void carryStick (Stick& stick);
     void carryShield (Shield& shield);
+    void usingHostelService();
 
 
 };

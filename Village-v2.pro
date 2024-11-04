@@ -4,11 +4,11 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        Auberge.cpp \
         Building.cpp \
         Character.cpp \
         City.cpp \
         Game.cpp \
+        Hostel.cpp \
         Inventory.cpp \
         Item.cpp \
         Mine.cpp \
@@ -24,11 +24,11 @@ SOURCES += \
         main.cpp
 
 HEADERS += \
-    Auberge.h \
     Building.h \
     Character.h \
     City.h \
     Game.h \
+    Hostel.h \
     Inventory.h \
     Item.h \
     Mine.h \

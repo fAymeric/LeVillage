@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "City.h"
+#include "Hostel.h"
 #include "Paladin.h"
 #include "Player.h"
 #include "Warrior.h"
@@ -51,6 +52,8 @@ Game::Game(){
     Sword Sword1; // à mettre quand on tombe sur l'épée mais reste là pour les test
     Stick Stick1;
     Shield Shield1;
+    Hostel Hostel1;
+    Hostel1.setResetLife(Perso1->GetMaxHealt());
 
     while (1){
         cout<<"Now what you want to do ?"<<endl;
@@ -59,9 +62,10 @@ Game::Game(){
         cout<<"Drink potions : 3"<< endl;
         cout<<"End Simulation : 4"<<endl;
         cout<<"Take the Weapon : 5" << endl;
+        cout<<"Go to Hostel : 6" << endl;
         cin>>choice;
         clearConsole();
-        if ( choice == "1" || choice == "2" || choice == "3"|| choice=="4" || choice == "5"){
+        if ( choice == "1" || choice == "2" || choice == "3"|| choice=="4" || choice == "5"|| choice == "6"){
             if ( choice == "1"){
                 Perso1->DisplayInformations();
             }
@@ -96,11 +100,12 @@ Game::Game(){
                     }
                     break;
                 }
-
+            }
+            if (choice == "6"){
+                Hostel1.resetLifeToMax(*Perso1);
+                cout << "You stayed at the hostel. Your health is now " << Perso1->GetHealth() << endl;
             }
         }
     }
-
-
     delete Perso1;
 };

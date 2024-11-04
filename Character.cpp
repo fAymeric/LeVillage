@@ -26,11 +26,21 @@ int Character::GetAttack()
 
 void Character::SetHealth(int health){
     m_health = health;
-};
+}
 
 int Character::GetHealth()
 {
     return m_health;
+}
+
+void Character::SetMaxHealt(int maxHealth)
+{
+    m_maxHealth = maxHealth;
+};
+
+int Character::GetMaxHealt()
+{
+    return m_maxHealth;
 };
 
 void Character::SetGold(int gold){

@@ -5,8 +5,9 @@
 #include "Item.h"
 class Potion : public Item
 {
-public:
     int m_heal;
+public:
+
     Potion();
     void setHeal(int heal);
     int getHeal() const;
