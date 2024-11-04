@@ -6,11 +6,11 @@
 
 class Wizzard: public Player
 {
-    // int m_dodge;
+    int m_dodge;
 public:
     Wizzard();
-   // void Dodge();
-   // void setDodge(int dodgingNbr);
+   void Dodge();
+   void setDodge(int dodgingNbr);
 };
 
 #endif // WIZZARD_H

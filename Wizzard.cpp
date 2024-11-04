@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <iostream>
 #include "Wizzard.h"
 
 using namespace std;
@@ -12,7 +13,7 @@ Wizzard::Wizzard() {
     m_defense = 5;
 }
 
-/*int get_rand_number_dodge (int min, int max)
+int get_rand_number_dodge (int min, int max)
 {
     return (rand()%(max-min+1)) +min;
 };
@@ -23,11 +24,10 @@ void Wizzard::setDodge(int dodgingNbr){
 void Wizzard::Dodge()
 {
     int chanceToDodge = 1;
-    Wizzard monWizzard;
-    monWizzard.setDodge(get_rand_number_dodge(1, 5));
+    setDodge(get_rand_number_dodge(1, 5));
     if (m_dodge == chanceToDodge){
         cout<<"The attack has been dodge"<<endl;
     }
 }
-*/
+
 
