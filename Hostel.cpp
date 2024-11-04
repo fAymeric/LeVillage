@@ -13,8 +13,8 @@ int Hostel::getResetLife()
 {
     return m_resetLife;
 }
-bool Hostel::resetLifeToMax(Character& character) {
-   if (character.payGold(m_stayCost)) {
+bool Hostel::resetLifeToMax(Character& character, Player& player) {
+   if (player.payGold(m_stayCost)) {
         character.SetHealth(m_resetLife);
        return true;
    }

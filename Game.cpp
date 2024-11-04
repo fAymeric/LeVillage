@@ -102,7 +102,7 @@ Game::Game(){
                 }
             }
             if (choice == "6"){
-                if (Hostel1.resetLifeToMax(*Perso1)) {
+                if (Hostel1.resetLifeToMax(*Perso1, *Perso1)) {
                    cout << "You stayed at the hostel and paid 10 gold. Your health is now " << Perso1->GetHealth() << endl;
                 } else {
                     cout << "You don't have enough gold to stay at the hostel." << endl;

@@ -5,6 +5,14 @@
 #include <iostream>
 Player::Player() {}
 
+bool Player::payGold(int amount){
+    if (m_gold >= amount) {
+        m_gold -= amount;
+        return true;
+    }
+    return false;
+}
+
 void Player::usePotion(Potion& Potion) {
     if (Potion.checkAuthorisations(m_name)){
     m_health += Potion.getHeal();

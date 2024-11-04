@@ -33,7 +33,7 @@ public:
     int GetDefense();
     void DisplayInformations();
     void HitCharactere();
-    bool payGold(int amount);
+
 };
 
 #endif // CHARACTER_H

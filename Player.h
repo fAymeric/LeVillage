@@ -25,6 +25,7 @@ public:
     void carryStick (Stick& stick);
     void carryShield (Shield& shield);
     void usingHostelService();
+    bool payGold(int amount);
 
 
 };
