@@ -69,4 +69,12 @@ void Character::DisplayInformations(){
     cout << "Your gold : "<<m_gold<<endl;
 };
 
+bool Character::payGold(int amount){
+    if (m_gold >= amount) {
+        m_gold -= amount;
+        return true;
+    }
+    return false;
+}
+
 

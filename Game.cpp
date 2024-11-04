@@ -102,8 +102,11 @@ Game::Game(){
                 }
             }
             if (choice == "6"){
-                Hostel1.resetLifeToMax(*Perso1);
-                cout << "You stayed at the hostel. Your health is now " << Perso1->GetHealth() << endl;
+                if (Hostel1.resetLifeToMax(*Perso1)) {
+                   cout << "You stayed at the hostel and paid 10 gold. Your health is now " << Perso1->GetHealth() << endl;
+                } else {
+                    cout << "You don't have enough gold to stay at the hostel." << endl;
+                }
             }
         }
     }
