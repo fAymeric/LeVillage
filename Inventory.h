@@ -8,10 +8,10 @@ using namespace std;
 class Inventory {
 public:
     Inventory();
-    void addPotion(Potion& Potion);
-    void removePotion(Potion& Potion);
+    void addItem(Item* Item);
+    void removeItem(Item* Item);
     void displayInventory();
 private:
-    vector<Potion> Potions;
+    vector<Item> Items;
 };
 #endif // INVENTORY_H

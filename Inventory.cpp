@@ -6,22 +6,22 @@ using namespace std;
 
 Inventory::Inventory() {
     for (int i = 0; i < 5; ++i) {
-        Potion potion;
-        Potions.push_back(potion);
+        Potion Potion;
+        Items.push_back(Potion);
     }
 }
 
-void Inventory::addPotion(Potion& Potion) {
-    Potions.push_back(Potion);
+void Inventory::addItem(Item* Item) {
+    Items.push_back(*Item);
 }
 
-void Inventory::removePotion(Potion& Potion){
-    Potions.pop_back();
+void Inventory::removeItem(Item* Item){
+    Items.pop_back();
 }
 
 void Inventory::displayInventory() {
     cout << "Inventory contains:" << endl;
-    for (size_t i = 0; i < Potions.size(); ++i) {
-        cout << "Potion " << i+1 << ": " << Potions[i].getItemName()<< endl;
+    for (size_t i = 0; i < Items.size(); ++i) {
+        cout << "Potion " << i+1 << ": " << Items[i].getItemName()<< endl;
     }
 }

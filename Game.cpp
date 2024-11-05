@@ -76,9 +76,9 @@ Game::Game(){
                 Perso1->showInventory();
             }
             if ( choice == "3"){
-                Potion potion1;
-                Perso1->usePotion(potion1);
-                Perso1->removePotionToInventory(potion1);
+                Potion Potion;
+                Perso1->usePotion(Potion);
+                Perso1->removeItemToInventory(&Potion);
             }
             if ( choice == "4"){
                 break;

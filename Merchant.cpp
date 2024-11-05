@@ -45,12 +45,12 @@ void Merchant::sellMerchandise(Player& player)
             for (size_t i = 0; i < merchandisePotion.size(); ++i) {
                 cout << "Potion " << i+1 << ": " << merchandisePotion[i].getItemName() << " - " << merchandisePotion[i].getPrice() << " gold" << endl;
             }
-            cout << "Enter the number of the potion you want to buy (or 6 to cancel): "<<endl;
+            cout << "Enter the number of the potion you want to buy : "<<endl;
             cin >> choice;
             if (choice > 0 && choice <= merchandisePotion.size()) {
-                Potion potion = merchandisePotion[choice-1];
+                Potion potion = merchandisePotion[choice];
                 if (player.payGold(potion.getPrice())) {
-                    player.addPotionToInventory(potion);
+                    player.addItemToInventory(&potion);
                     merchandisePotion.erase(merchandisePotion.begin() + (choice));
                     cout << "You bought a " << potion.getItemName() << "!" << endl;
                 } else {
@@ -61,26 +61,30 @@ void Merchant::sellMerchandise(Player& player)
             for (size_t i = 0; i < merchandiseSword.size(); ++i) {
                 cout << "Sword " << i+1 << ": " << merchandiseSword[i].getItemName() << " - " << merchandiseSword[i].getPrice() << " gold" << endl; merchandiseSword[i].displayInformations();
             }
-            cout << "Enter the number of the sword you want to buy (or 0 to cancel): ";
+            cout << "Enter the number of the sword you want to buy : ";
             cin >> choice;
             if (choice > 0 && choice <= merchandiseSword.size()) {
-                Sword sword = merchandiseSword[choice-1];
-                if (player.payGold(sword.getPrice()))
-                    merchandiseSword.erase(merchandiseSword.begin() + (choice - 1));
+                Sword sword = merchandiseSword[choice];
+                if (player.payGold(sword.getPrice())){
+                    player.addItemToInventory(&sword);
+                    merchandiseSword.erase(merchandiseSword.begin() + (choice));
                     cout << "You bought a " << sword.getItemName() << "!" << endl;
                 } else {
                     cout << "You don't have enough gold! " << endl;
                 }
+            }
             break;
         case 3:
             cout << "I have these shields for you:" << endl;
             for (size_t i = 0; i < merchandiseShield.size(); ++i) {
                 cout << "Shield " << i+1 << ": " << merchandiseShield[i].getItemName() << " - " << merchandiseShield[i].getPrice() << " gold" << endl; merchandiseShield[i].displayInformations(); }
-            cout << "Enter the number of the shield you want to buy (or 0 to cancel): ";
+            cout << "Enter the number of the shield you want to buy : ";
             cin >> choice;
-            if (choice > 0 && choice <= merchandiseShield.size()) { Shield shield = merchandiseShield[choice-1];
+            if (choice > 0 && choice <= merchandiseShield.size()) {
+                Shield shield = merchandiseShield[choice];
                 if (player.payGold(shield.getPrice())) {
-                    merchandiseShield.erase(merchandiseShield.begin() + (choice - 1));
+                    player.addItemToInventory(&shield);
+                    merchandiseShield.erase(merchandiseShield.begin() + (choice));
                     cout << "You bought a " << shield.getItemName() << "!" << endl;
                 } else {
                     cout << "You don't have enough gold!" << endl;
@@ -92,16 +96,19 @@ void Merchant::sellMerchandise(Player& player)
             for (size_t i = 0; i < merchandiseStick.size(); ++i) {
                 cout << "Stick " << i+1 << ": " << merchandiseStick[i].getItemName() << " - " << merchandiseStick[i].getPrice() << " gold" << endl; merchandiseStick[i].displayInformations();
             }
-            cout << "Enter the number of the stick you want to buy (or 0 to cancel): ";
+            cout << "Enter the number of the stick you want to buy : ";
             cin >> choice;
+            for (size_t i = 0; i < merchandiseStick.size(); ++i) {
             if (choice > 0 && choice <= merchandiseStick.size()) {
                 Stick stick = merchandiseStick[choice-1];
-                if (player.payGold(stick.getPrice())) {
-                    merchandiseStick.erase(merchandiseStick.begin() + (choice - 1));
+                if (player.payGold(merchandiseStick[i].getPrice())) {
+                    player.addItemToInventory(&stick);
+                    merchandiseStick.erase(merchandiseStick.begin() + (choice));
                     cout << "You bought a " << stick.getItemName() << "!" << endl;
                 } else {
                     cout << "You don't have enough gold!" << endl;
                 }
+            }
             }
             break;
         case 5:

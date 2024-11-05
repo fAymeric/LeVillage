@@ -51,11 +51,11 @@ void Player::carryShield(Shield& shield) {
     }
 }
 
-void Player::addPotionToInventory(Potion& potion) {
-    inventory.addPotion(potion);
+void Player::addItemToInventory(Item* Item) {
+    inventory.addItem(Item);
 }
-void Player::removePotionToInventory(Potion& potion) {
-    inventory.removePotion(potion);
+void Player::removeItemToInventory(Item* Item) {
+    inventory.removeItem(Item);
 }
 
 

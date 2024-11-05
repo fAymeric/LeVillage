@@ -18,8 +18,8 @@ public:
     void setRandStats();
     void displayInformations();
     void usePotion(Potion& potion);
-    void addPotionToInventory(Potion& potion);
-    void removePotionToInventory(Potion& potion);
+    void addItemToInventory(Item* Item);
+    void removeItemToInventory(Item* Item);
     void showInventory();
     void carrySword (Sword& sword);
     void carryStick (Stick& stick);
