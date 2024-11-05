@@ -69,7 +69,7 @@ void Merchant::sellMerchandise(Player& player)
                     merchandiseSword.erase(merchandiseSword.begin() + (choice - 1));
                     cout << "You bought a " << sword.getItemName() << "!" << endl;
                 } else {
-                    cout << "You don't have enough gold!" << endl;
+                    cout << "You don't have enough gold! " << endl;
                 }
             break;
         case 3:
