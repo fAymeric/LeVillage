@@ -1,4 +1,5 @@
 #include "Shield.h"
+#include <iostream>
 
 Shield::Shield() {
     m_name = "Wooden Shield";
@@ -18,4 +19,13 @@ int Shield::getBoostDefense() const
     return m_addDefense;
 }
 
-
+Shield::Shield(string name, int addDefense, int durability, int price){
+    m_name = name;
+    m_addDefense = addDefense;
+    m_durability = durability;
+    m_price = price;
+    addAuthorizedClass("Paladin");
+}
+void Shield::displayInformations() const {
+    cout << "Shield Information: " << "Name: " << m_name << ", Defense Boost: +" << m_addDefense << ", Durability: " << m_durability << ", Price: " << m_price << " gold" << endl;
+}

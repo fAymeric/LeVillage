@@ -1,5 +1,6 @@
 #include "Item.h"
 #include <algorithm>
+#include <iostream>
 using namespace std;
 Item::Item() {}
 
@@ -27,4 +28,7 @@ void Item::addAuthorizedClass(const string& classe) {
 bool Item::checkAuthorisations(const string& classe)
 {
     return find(authorizedClasses.begin(), authorizedClasses.end(), classe) != authorizedClasses.end();
+}
+void Item::displayInformations() const {
+    cout << "Weapon Information: " << "Name: " << m_name << ", Durability: " << m_durability << ", Price: " << m_price << " gold" << endl;
 }

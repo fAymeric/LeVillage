@@ -7,3 +7,13 @@ Stick::Stick() {
     m_price = 20;
     addAuthorizedClass("Wizzard");
 }
+Stick::Stick(string name, int damageBoost, int durability, int price){
+    m_name = name;
+    m_damageBoost = damageBoost;
+    m_durability = durability;
+    m_price = price;
+    addAuthorizedClass("Wizzard");
+}
+void Stick::displayInformations() const {
+    Weapon::displayInformations();
+}

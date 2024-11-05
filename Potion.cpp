@@ -12,7 +12,7 @@ int Potion::getHeal() const{
 Potion::Potion() {
     m_name = "Heal potion";
     m_heal = 50;
-    m_price = 30;
+    m_price = 10;
     m_durability = 1;
     addAuthorizedClass("Warrior");
     addAuthorizedClass("Paladin");

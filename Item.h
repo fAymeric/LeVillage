@@ -22,6 +22,7 @@ public:
     int getDurability();
     void addAuthorizedClass(const string& classe);
     bool checkAuthorisations(const string& classe);
+    virtual void displayInformations() const;
 };
 
 #endif // ITEM_H

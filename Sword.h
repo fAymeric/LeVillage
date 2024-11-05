@@ -7,6 +7,8 @@ class Sword:public Weapon
 {
 public:
     Sword();
+    Sword(string name, int damageBoost, int durability, int price);
+    void displayInformations() const override;
 };
 
 #endif // SWORD_H

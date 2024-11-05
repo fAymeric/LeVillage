@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "City.h"
 #include "Hostel.h"
+#include "Merchant.h"
 #include "Paladin.h"
 #include "Player.h"
 #include "Warrior.h"
@@ -53,6 +54,7 @@ Game::Game(){
     Stick Stick1;
     Shield Shield1;
     Hostel Hostel1;
+    Merchant merchant1;
     Hostel1.setResetLife(Perso1->GetMaxHealt());
 
     while (1){
@@ -68,6 +70,7 @@ Game::Game(){
         if ( choice == "1" || choice == "2" || choice == "3"|| choice=="4" || choice == "5"|| choice == "6"){
             if ( choice == "1"){
                 Perso1->DisplayInformations();
+                merchant1.sellMerchandise(*Perso1);
             }
             if (choice == "2"){
                 Perso1->showInventory();

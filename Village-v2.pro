@@ -11,6 +11,7 @@ SOURCES += \
         Hostel.cpp \
         Inventory.cpp \
         Item.cpp \
+        Merchant.cpp \
         Mine.cpp \
         Paladin.cpp \
         Player.cpp \
@@ -31,6 +32,7 @@ HEADERS += \
     Hostel.h \
     Inventory.h \
     Item.h \
+    Merchant.h \
     Mine.h \
     Paladin.h \
     Player.h \

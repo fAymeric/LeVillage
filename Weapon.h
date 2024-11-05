@@ -12,6 +12,7 @@ public:
     Weapon();
     void setDamageBoost(int damageBoost);
     int getDamageBoost() const ;
+    void displayInformations() const override;
 };
 
 #endif // WEAPON_H

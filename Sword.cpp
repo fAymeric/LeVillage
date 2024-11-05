@@ -9,3 +9,14 @@ Sword::Sword()
     addAuthorizedClass("Warrior");
     addAuthorizedClass("Paladin");
 }
+Sword::Sword(string name, int damageBoost, int durability, int price){
+    m_name = name;
+    m_damageBoost = damageBoost;
+    m_durability = durability;
+    m_price = price;
+    addAuthorizedClass("Warrior");
+    addAuthorizedClass("Paladin");
+}
+void Sword::displayInformations() const {
+    Weapon::displayInformations();
+}
