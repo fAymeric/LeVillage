@@ -70,6 +70,7 @@ void Character::DisplayInformations(){
 };
 
 void Character::HitCharactere(Character& receveur){
-    receveur.SetHealth(receveur.GetHealth()-(GetAttack()/receveur.GetDefense()));
+    int dmg = GetAttack()-receveur.GetDefense();
+    receveur.SetHealth(receveur.GetHealth()-dmg);
 };
 

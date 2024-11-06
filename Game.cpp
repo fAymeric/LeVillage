@@ -159,6 +159,7 @@ Game::Game(){
                 cout << "You enter to mine and you will fight with " << nb << " monster !" << endl;
                 for (int j=0; j<nb; j++){
                     Monster Goule;
+                    cout<<"You encounter a goule, the goule "<<j+1<<" went to have a fight"<<endl;
                     while(1){
                         cout<<"Hit : 1"<< endl;
                         cout<<"Drink Potion : 2"<< endl;
@@ -166,22 +167,30 @@ Game::Game(){
                         cin >> choice;
                         if (choice == "1" || choice == "2" || choice == "3"){
                             if (choice == "1"){
+                                clearConsol();
                                 Perso1->HitCharactere(Goule);
+                                cout<<Goule.GetName()<< j+1 <<" take damage : -"<<Perso1->GetAttack()/Goule.GetDefense()<<endl;
                                 Goule.HitCharactere(*Perso1);
-                                Perso1->DisplayInformations();
-                                Goule.DisplayInformations();
+                                cout<<Perso1->GetName()<<" take damage : -"<<Goule.GetAttack()-Perso1->GetDefense()<<endl;
+                                cout<<Perso1->GetName()<<" life : "<< Perso1->GetHealth()<<"/"<<Perso1->GetMaxHealt()<<endl;
+                                cout<<Goule.GetName()<< j+1 <<" life : "<<Goule.GetHealth() <<"/"<<Goule.GetMaxHealt()<<endl;
                             }
                             if (choice =="2"){
+                                clearConsol();
                                 Perso1->usePotion(Potion);
                                 Perso1->removeItemToInventory(&Potion);
+                                cout<<Perso1->GetName()<<" recovery : +"<<Potion.getHeal()<<endl;
                                 Goule.HitCharactere(*Perso1);
-                                Perso1->DisplayInformations();
-                                Goule.DisplayInformations();
+                                cout<<Perso1->GetName()<<" take damage : -"<<Goule.GetAttack()-Perso1->GetDefense()<<endl;
+                                cout<<Goule.GetName()<< j+1 <<" life : "<< Goule.GetMaxHealt()<<"/"<<Goule.GetHealth()<<endl;
+
                             }
                             if (choice == "3"){
+                                clearConsol();
                                 Goule.HitCharactere(*Perso1);
-                                Perso1->DisplayInformations();
-                                Goule.DisplayInformations();
+                                cout<<Perso1->GetName()<<" take domage : -"<<Goule.GetAttack()/Perso1->GetDefense()<<endl;
+                                cout<<Perso1->GetName()<<" life : "<< Perso1->GetMaxHealt()<<"/"<<Perso1->GetHealth()<<endl;
+                                cout<<Goule.GetName()<< j+1 <<" life : "<< Goule.GetMaxHealt()<<"/"<<Goule.GetHealth()<<endl;
                             }
                         }
                         if (Perso1->GetHealth()<=0){
@@ -193,6 +202,7 @@ Game::Game(){
                         }
                     }
                     if (Perso1->GetHealth()<=0){
+                        clearConsol();
                         cout<<"You are dead"<<endl;
                         break;
                     }
