@@ -200,45 +200,45 @@ Game::Game(){
             }
             if (choice == "8"){
                 while (1){
-                    cout << "What do you want to unequip ? "<< endl;
-                    cout<<"(You need the full name of the equipement without space ex : For Wooden Sword -> WoodenSword)"<<endl;
+                    cout << "What item do you want to unequip ? "<< endl;
+                    cout<<"(You need the full name of the Item without space ex : For Wooden Sword -> WoodenSword)"<<endl;
                     cin >> choice;
                     if (choice == "WoodenSword"||choice == "IronSword" || choice == "DragonSlayer" || choice == "ShadowBlade"||choice == "WoodenShield"||choice == "IronShield" || choice == "TheDefender" || choice == "Astralia"||choice == "WoodenStick"||choice == "GreyStick" || choice == "TheDSKOne" || choice == "TheMysteriousOne") {
                         if (choice == "WoodenSword") {
                             Perso1->unequipSword(&Sword1);
                         }
                         if (choice == "IronSword") {
-                            Perso1->carrySword(sword2);
+                            Perso1->unequipSword(sword2);
                         }
                         if (choice == "DragonSlayer") {
-                            Perso1->carrySword(sword3);
+                            Perso1->unequipSword(sword3);
                         }
                         if (choice == "ShadowBlade") {
-                            Perso1->carrySword(sword4);
+                            Perso1->unequipSword(sword4);
                         }
                         if (choice == "WoodenShield") {
-                            Perso1->carryShield(&Shield1);
+                            Perso1->unequipShield(&Shield1);
                         }
                         if (choice == "IronShield") {
-                            Perso1->carryShield(shield2);
+                            Perso1->unequipShield(shield2);
                         }
                         if (choice == "TheDefender") {
-                            Perso1->carryShield(shield3);
+                            Perso1->unequipShield(shield3);
                         }
                         if (choice == "Astralia") {
-                            Perso1->carryShield(shield4);
+                            Perso1->unequipShield(shield4);
                         }
                         if (choice == "WoodenStick") {
-                            Perso1->carryStick(&Stick1);
+                            Perso1->unequipStick(&Stick1);
                         }
                         if (choice == "GreyStick") {
-                            Perso1->carryStick(stick2);
+                            Perso1->unequipStick(stick2);
                         }
                         if (choice == "TheDSKOne") {
-                            Perso1->carryStick(stick3);
+                            Perso1->unequipStick(stick3);
                         }
                         if (choice == "TheMysteriousOne") {
-                            Perso1->carryStick(stick4);
+                            Perso1->unequipStick(stick4);
                         }
                     }else{
                         cout << "This weapon doesn't exist..."<<endl;
@@ -252,6 +252,4 @@ Game::Game(){
 };
 
 // to do : faire en sorte si possible que le joueur équipe qu'une épée si il en a qu'une dans l'inventaire (éviter la duplication)
-// pouvoir déséquipper ses items
-// system de vente
 // ajouter l'esquive aux batons
