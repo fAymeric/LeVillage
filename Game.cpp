@@ -83,7 +83,7 @@ Game::Game(){
         cout<<"Go to Hostel : 6" << endl;
         cout<<"Go to Mine : 7"<<endl;
         cin>>choice;
-        if ( choice == "1" || choice == "2" || choice == "3"|| choice=="4" || choice == "5"|| choice == "6"|| choice == "7"){
+        if ( choice == "1" || choice == "2" || choice == "3"|| choice=="4" || choice == "5"|| choice == "6"|| choice == "7"|| choice=="8"){
             if ( choice == "1"){
                 Perso1->DisplayInformations();
                 merchant.sellMerchandise(*Perso1);
@@ -197,6 +197,54 @@ Game::Game(){
                     }
                 }
                 Mine1.MineLevelUp();
+            }
+            if (choice == "8"){
+                while (1){
+                    cout << "What do you want to unequip ? "<< endl;
+                    cout<<"(You need the full name of the equipement without space ex : For Wooden Sword -> WoodenSword)"<<endl;
+                    cin >> choice;
+                    if (choice == "WoodenSword"||choice == "IronSword" || choice == "DragonSlayer" || choice == "ShadowBlade"||choice == "WoodenShield"||choice == "IronShield" || choice == "TheDefender" || choice == "Astralia"||choice == "WoodenStick"||choice == "GreyStick" || choice == "TheDSKOne" || choice == "TheMysteriousOne") {
+                        if (choice == "WoodenSword") {
+                            Perso1->unequipSword(&Sword1);
+                        }
+                        if (choice == "IronSword") {
+                            Perso1->carrySword(sword2);
+                        }
+                        if (choice == "DragonSlayer") {
+                            Perso1->carrySword(sword3);
+                        }
+                        if (choice == "ShadowBlade") {
+                            Perso1->carrySword(sword4);
+                        }
+                        if (choice == "WoodenShield") {
+                            Perso1->carryShield(&Shield1);
+                        }
+                        if (choice == "IronShield") {
+                            Perso1->carryShield(shield2);
+                        }
+                        if (choice == "TheDefender") {
+                            Perso1->carryShield(shield3);
+                        }
+                        if (choice == "Astralia") {
+                            Perso1->carryShield(shield4);
+                        }
+                        if (choice == "WoodenStick") {
+                            Perso1->carryStick(&Stick1);
+                        }
+                        if (choice == "GreyStick") {
+                            Perso1->carryStick(stick2);
+                        }
+                        if (choice == "TheDSKOne") {
+                            Perso1->carryStick(stick3);
+                        }
+                        if (choice == "TheMysteriousOne") {
+                            Perso1->carryStick(stick4);
+                        }
+                    }else{
+                        cout << "This weapon doesn't exist..."<<endl;
+                    }
+                    break;
+                }
             }
         }
     }

@@ -6,7 +6,7 @@ Weapon::Weapon() {}
 void Weapon::setDamageBoost(int damageBoost) {
     m_damageBoost = damageBoost;
 }
-int Weapon::getDamageBoost() const{
+int Weapon::getDamageBoost(){
     return m_damageBoost;
 }
 

@@ -11,6 +11,7 @@ using namespace std;
 
 class Player : public Character
 {
+protected:
     Inventory inventory;
     string m_classe;
 public:
@@ -21,13 +22,15 @@ public:
     void addItemToInventory(Item* Item);
     void removeItemToInventory(Item* Item);
     void showInventory();
-    void carrySword (Sword*);
+    void carrySword (Sword* sword);
     void carryStick (Stick* stick);
     void carryShield (Shield* shield);
     void usingHostelService();
     bool payGold(int amount);
-
-
+    void sellItem();
+    void unequipSword(Sword* sword);
+    void unequipStick(Stick* stick);
+    void unequipShield(Shield* shield);
 };
 
 #endif // PLAYER_H

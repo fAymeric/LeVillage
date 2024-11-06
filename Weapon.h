@@ -11,7 +11,7 @@ protected:
 public:
     Weapon();
     void setDamageBoost(int damageBoost);
-    int getDamageBoost() const ;
+    int getDamageBoost() ;
     void displayInformations() const override;
 };
 

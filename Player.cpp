@@ -10,6 +10,8 @@ Player::Player() {}
 int carrySwordNumber = 0;
 int carryStickNumber = 0;
 int carryShieldNumber = 0;
+int choice;
+Sword sword;
 
 bool Player::payGold(int amount){
     if (m_gold >= amount) {
@@ -17,6 +19,36 @@ bool Player::payGold(int amount){
         return true;
     }
     return false;
+}
+
+void Player::unequipSword(Sword* sword) {
+    if (carrySwordNumber >0){
+        cout << "You unequip " << sword->getItemName() << ". You loose "<< sword->getDamageBoost() << " damage." << endl;
+        m_attack -= sword->getDamageBoost();
+        carrySwordNumber--;
+    }else{
+        cout<<"You have nothing to unequip..."<<endl;
+    }
+}
+void Player::unequipStick(Stick* stick) {
+    if (carryStickNumber >0){
+        cout << "You unequip " << stick->getItemName() << ". You loose "<< stick->getDamageBoost() << " damage." << endl;
+        m_attack -= stick->getDamageBoost();
+        carryStickNumber--;
+    }else{
+        cout<<"You have nothing to unequip..."<<endl;
+    }
+}
+
+
+void Player::unequipShield(Shield* shield) {
+    if (carryShieldNumber >0){
+        cout << "You unequip " << shield->getItemName() << ". You loose "<< shield->getBoostDefense() << " defense." << endl;
+        m_attack -= shield->getBoostDefense();
+        carryShieldNumber--;
+    }else{
+        cout<<"You have nothing to unequip..."<<endl;
+    }
 }
 
 void Player::usePotion(Potion& Potion) {
