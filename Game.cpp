@@ -2,6 +2,8 @@
 #include "City.h"
 #include "Hostel.h"
 #include "Merchant.h"
+#include "Mine.h"
+#include "Monster.h"
 #include "Paladin.h"
 #include "Player.h"
 #include "Warrior.h"
@@ -67,6 +69,8 @@ Game::Game(){
     Shield Shield1;
     Hostel Hostel1;
     Merchant merchant;
+    Mine Mine1;
+    Potion Potion;
     Hostel1.setResetLife(Perso1->GetMaxHealt());
 
     while (1){
@@ -77,8 +81,9 @@ Game::Game(){
         cout<<"End Simulation : 4"<<endl;
         cout<<"Equip Weapon : 5" << endl;
         cout<<"Go to Hostel : 6" << endl;
+        cout<<"Go to Mine : 7"<<endl;
         cin>>choice;
-        if ( choice == "1" || choice == "2" || choice == "3"|| choice=="4" || choice == "5"|| choice == "6"){
+        if ( choice == "1" || choice == "2" || choice == "3"|| choice=="4" || choice == "5"|| choice == "6"|| choice == "7"){
             if ( choice == "1"){
                 Perso1->DisplayInformations();
                 merchant.sellMerchandise(*Perso1);
@@ -87,7 +92,6 @@ Game::Game(){
                 Perso1->showInventory();
             }
             if ( choice == "3"){
-                Potion Potion;
                 Perso1->usePotion(Potion);
                 Perso1->removeItemToInventory(&Potion);
             }
@@ -149,9 +153,57 @@ Game::Game(){
                     cout << "You don't have enough gold to stay at the hostel." << endl;
                 }
             }
+            if (choice =="7"){
+                int nb = Mine1.MonsterOnMine();
+                cout << "You enter to mine and you will fight with " << nb << " monster !" << endl;
+                for (int j=0; j<nb; j++){
+                    Monster Goule;
+                    while(1){
+                        cout<<"Hit : 1"<< endl;
+                        cout<<"Drink Potion : 2"<< endl;
+                        cout<<"Nothing : 3"<< endl;
+                        cin >> choice;
+                        if (choice == "1" || choice == "2" || choice == "3"){
+                            if (choice == "1"){
+                                Perso1->HitCharactere(Goule);
+                                Goule.HitCharactere(*Perso1);
+                                Perso1->DisplayInformations();
+                                Goule.DisplayInformations();
+                            }
+                            if (choice =="2"){
+                                Perso1->usePotion(Potion);
+                                Perso1->removeItemToInventory(&Potion);
+                                Goule.HitCharactere(*Perso1);
+                                Perso1->DisplayInformations();
+                                Goule.DisplayInformations();
+                            }
+                            if (choice == "3"){
+                                Goule.HitCharactere(*Perso1);
+                                Perso1->DisplayInformations();
+                                Goule.DisplayInformations();
+                            }
+                        }
+                        if (Perso1->GetHealth()<=0){
+                            break;
+                        }
+                        if (Goule.GetHealth()<=0){
+                            Perso1->SetGold(Perso1->GetGold()+Goule.GetGold());
+                            break;
+                        }
+                    }
+                    if (Perso1->GetHealth()<=0){
+                        cout<<"You are dead"<<endl;
+                        break;
+                    }
+                }
+                Mine1.MineLevelUp();
+            }
         }
     }
     delete Perso1;
 };
 
-
+// to do : faire en sorte si possible que le joueur équipe qu'une épée si il en a qu'une dans l'inventaire (éviter la duplication)
+// pouvoir déséquipper ses items
+// system de vente
+// ajouter l'esquive aux batons

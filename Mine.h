@@ -3,8 +3,11 @@
 
 class Mine
 {
+    int m_niveau;
 public:
     Mine();
+    int MonsterOnMine();
+    void MineLevelUp();
 };
 
 #endif // MINE_H

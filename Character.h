@@ -32,7 +32,7 @@ public:
     int GetGold();
     int GetDefense();
     void DisplayInformations();
-    void HitCharactere();
+    void HitCharactere (Character& receveur);
 
 };
 

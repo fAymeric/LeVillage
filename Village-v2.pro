@@ -13,6 +13,7 @@ SOURCES += \
         Item.cpp \
         Merchant.cpp \
         Mine.cpp \
+        Monster.cpp \
         Paladin.cpp \
         Player.cpp \
         Potion.cpp \
@@ -34,6 +35,7 @@ HEADERS += \
     Item.h \
     Merchant.h \
     Mine.h \
+    Monster.h \
     Paladin.h \
     Player.h \
     Potion.h \

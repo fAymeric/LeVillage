@@ -69,4 +69,7 @@ void Character::DisplayInformations(){
     cout << "Your gold : "<<m_gold<<endl;
 };
 
+void Character::HitCharactere(Character& receveur){
+    receveur.SetHealth(receveur.GetHealth()-(GetAttack()/receveur.GetDefense()));
+};
 
