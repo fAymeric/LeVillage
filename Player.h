@@ -21,9 +21,9 @@ public:
     void addItemToInventory(Item* Item);
     void removeItemToInventory(Item* Item);
     void showInventory();
-    void carrySword (Sword& sword);
-    void carryStick (Stick& stick);
-    void carryShield (Shield& shield);
+    void carrySword (Sword*);
+    void carryStick (Stick* stick);
+    void carryShield (Shield* shield);
     void usingHostelService();
     bool payGold(int amount);
 

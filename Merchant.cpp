@@ -2,26 +2,18 @@
 #include "Player.h"
 #include <iostream>
 
-Sword* sword1 = new Sword("Iron Sword", 20, 100, 45);
-Sword* sword2 = new Sword("Dragon Slayer", 70, 100, 200);
-Sword* sword3 = new Sword("Shadow Blade", 60, 100, 140);
-Shield* shield1 = new Shield("Iron Shield", 20, 100, 35);
-Shield* shield2 = new Shield("The Defender", 30, 100, 110);
-Shield* shield3 = new Shield("Astralia", 45, 100, 350);
-Stick* stick1 = new Stick("Grey stick",15,100,100);// need to add dodge chance
-Stick* stick2 = new Stick("The DSK's one",15,100,250);
-Stick* stick3 = new Stick("The mysterious One",15,100,500);
+
 
 Merchant::Merchant() {
-    merchandiseSword.push_back(*sword1);
-    merchandiseSword.push_back(*sword2);
-    merchandiseSword.push_back(*sword3);
-    merchandiseShield.push_back(*shield1);
-    merchandiseShield.push_back(*shield2);
-    merchandiseShield.push_back(*shield3);
-    merchandiseStick.push_back(*stick1);
-    merchandiseStick.push_back(*stick2);
-    merchandiseStick.push_back(*stick3);
+    merchandiseSword.emplace_back("Iron Sword", 20, 100, 45);
+    merchandiseSword.emplace_back("Dragon Slayer", 70, 100, 200);
+    merchandiseSword.emplace_back("Shadow Blade", 60, 100, 140);
+    merchandiseShield.emplace_back("Iron Shield", 20, 100, 35);
+    merchandiseShield.emplace_back("The Defender", 30, 100, 110);
+    merchandiseShield.emplace_back("Astralia", 45, 100, 350);
+    merchandiseStick.emplace_back("Grey Stick", 15, 100, 100);
+    merchandiseStick.emplace_back("The DSK One", 15, 100, 250);
+    merchandiseStick.emplace_back("The Mysterious One", 15, 100, 500);
     for (int i = 0; i < 5; ++i) {
         Potion potion;
         merchandisePotion.push_back(potion);
@@ -45,13 +37,13 @@ void Merchant::sellMerchandise(Player& player)
             for (size_t i = 0; i < merchandisePotion.size(); ++i) {
                 cout << "Potion " << i+1 << ": " << merchandisePotion[i].getItemName() << " - " << merchandisePotion[i].getPrice() << " gold" << endl;
             }
-            cout << "Enter the number of the potion you want to buy : "<<endl;
+            cout << "Enter the number of the potion you want to buy (and press 0 to exit) : "<<endl;
             cin >> choice;
             if (choice > 0 && choice <= merchandisePotion.size()) {
-                Potion potion = merchandisePotion[choice];
+                Potion potion = merchandisePotion[choice-1];
                 if (player.payGold(potion.getPrice())) {
                     player.addItemToInventory(&potion);
-                    merchandisePotion.erase(merchandisePotion.begin() + (choice));
+                    merchandisePotion.erase(merchandisePotion.begin() + (choice-1));
                     cout << "You bought a " << potion.getItemName() << "!" << endl;
                 } else {
                     cout << "You don't have enough gold!" << endl;
@@ -61,13 +53,13 @@ void Merchant::sellMerchandise(Player& player)
             for (size_t i = 0; i < merchandiseSword.size(); ++i) {
                 cout << "Sword " << i+1 << ": " << merchandiseSword[i].getItemName() << " - " << merchandiseSword[i].getPrice() << " gold" << endl; merchandiseSword[i].displayInformations();
             }
-            cout << "Enter the number of the sword you want to buy : ";
+            cout << "Enter the number of the sword you want to buy (and press 0 to exit) : ";
             cin >> choice;
             if (choice > 0 && choice <= merchandiseSword.size()) {
-                Sword sword = merchandiseSword[choice];
+                Sword sword = merchandiseSword[choice-1];
                 if (player.payGold(sword.getPrice())){
                     player.addItemToInventory(&sword);
-                    merchandiseSword.erase(merchandiseSword.begin() + (choice));
+                    merchandiseSword.erase(merchandiseSword.begin() + (choice-1));
                     cout << "You bought a " << sword.getItemName() << "!" << endl;
                 } else {
                     cout << "You don't have enough gold! " << endl;
@@ -78,13 +70,13 @@ void Merchant::sellMerchandise(Player& player)
             cout << "I have these shields for you:" << endl;
             for (size_t i = 0; i < merchandiseShield.size(); ++i) {
                 cout << "Shield " << i+1 << ": " << merchandiseShield[i].getItemName() << " - " << merchandiseShield[i].getPrice() << " gold" << endl; merchandiseShield[i].displayInformations(); }
-            cout << "Enter the number of the shield you want to buy : ";
+            cout << "Enter the number of the shield you want to buy (and press 0 to exit) : ";
             cin >> choice;
             if (choice > 0 && choice <= merchandiseShield.size()) {
-                Shield shield = merchandiseShield[choice];
+                Shield shield = merchandiseShield[choice-1];
                 if (player.payGold(shield.getPrice())) {
                     player.addItemToInventory(&shield);
-                    merchandiseShield.erase(merchandiseShield.begin() + (choice));
+                    merchandiseShield.erase(merchandiseShield.begin() + (choice-1));
                     cout << "You bought a " << shield.getItemName() << "!" << endl;
                 } else {
                     cout << "You don't have enough gold!" << endl;
@@ -96,19 +88,17 @@ void Merchant::sellMerchandise(Player& player)
             for (size_t i = 0; i < merchandiseStick.size(); ++i) {
                 cout << "Stick " << i+1 << ": " << merchandiseStick[i].getItemName() << " - " << merchandiseStick[i].getPrice() << " gold" << endl; merchandiseStick[i].displayInformations();
             }
-            cout << "Enter the number of the stick you want to buy : ";
+            cout << "Enter the number of the stick you want to buy (and press 0 to exit) : ";
             cin >> choice;
-            for (size_t i = 0; i < merchandiseStick.size(); ++i) {
             if (choice > 0 && choice <= merchandiseStick.size()) {
                 Stick stick = merchandiseStick[choice-1];
-                if (player.payGold(merchandiseStick[i].getPrice())) {
+                if (player.payGold(stick.getPrice())) {
                     player.addItemToInventory(&stick);
-                    merchandiseStick.erase(merchandiseStick.begin() + (choice));
+                    merchandiseStick.erase(merchandiseStick.begin() + (choice-1));
                     cout << "You bought a " << stick.getItemName() << "!" << endl;
                 } else {
                     cout << "You don't have enough gold!" << endl;
                 }
-            }
             }
             break;
         case 5:

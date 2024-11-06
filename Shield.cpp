@@ -26,6 +26,11 @@ Shield::Shield(string name, int addDefense, int durability, int price){
     m_price = price;
     addAuthorizedClass("Paladin");
 }
+
+void Shield::setCarryShieldNumber(int carryShieldNumber)
+{
+    m_carryShieldNumber = carryShieldNumber;
+}
 void Shield::displayInformations() const {
     cout << "Shield Information: " << "Name: " << m_name << ", Defense Boost: +" << m_addDefense << ", Durability: " << m_durability << ", Price: " << m_price << " gold" << endl;
 }

@@ -11,6 +11,7 @@ public:
     void addItem(Item* Item);
     void removeItem(Item* Item);
     void displayInventory();
+    bool checkItem(Item* Item);
 private:
     vector<Item> Items;
 };

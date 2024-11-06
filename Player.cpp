@@ -2,8 +2,14 @@
 #include "Potion.h"
 #include "Shield.h"
 #include "Stick.h"
+#include "Item.h"
+#include "Sword.h"
 #include <iostream>
 Player::Player() {}
+
+int carrySwordNumber = 0;
+int carryStickNumber = 0;
+int carryShieldNumber = 0;
 
 bool Player::payGold(int amount){
     if (m_gold >= amount) {
@@ -25,29 +31,72 @@ void Player::usePotion(Potion& Potion) {
     }
 }
 
-void Player::carrySword(Sword& sword) {
-    if (sword.checkAuthorisations(m_name)){
-        m_attack += sword.getDamageBoost();
-        cout << "You're carrying " << sword.getItemName() << ". This sword is boosting your damage. You're dealing "<< m_attack << " now." << endl;
-    } else {
-        cout << "You are not authorized to carry this sword." << endl;
+void Player::carrySword(Sword* sword) {
+    if (!inventory.checkItem(sword)) {
+        cout << "You don't have this sword in your inventory." << endl;
+        return;
     }
+    if (m_name == "Warrior"){
+        if (carrySwordNumber<2){
+            if (sword->checkAuthorisations(m_name)){
+                m_attack += sword->getDamageBoost();
+                cout << "You're carrying " << sword->getItemName() << ". This sword is boosting your damage. You're dealing "<< m_attack << " damage now." << endl;
+                carrySwordNumber += 1;
+            } else {
+                cout << "You are not authorized to carry this sword." << endl;
+            }
+        }else{
+            cout<< "You are already carrying two Swords... First you have to unequiped one of your weapon to carry another one. "<<endl;
+        }
+    }else{
+        if (carrySwordNumber<1){
+            if (sword->checkAuthorisations(m_name)){
+                m_attack += sword->getDamageBoost();
+                cout << "You're carrying " << sword->getItemName() << ". This sword is boosting your damage. You're dealing "<< m_attack << " damage now." << endl;
+                carrySwordNumber += 1;
+            } else {
+                cout << "You are not authorized to carry this sword." << endl;
+            }
+        }else{
+            cout<< "You are already carrying a swords... First you have to unequiped your sword to carry another one. "<<endl;
+        }
+    }
+
+
 }
-void Player::carryStick(Stick& stick) {
-    if (stick.checkAuthorisations(m_name)){
-        m_attack += stick.getDamageBoost();
-        cout << "You're carrying " << stick.getItemName() << ". This sword is boosting your damage. You're dealing "<< m_attack << " now." << endl;
-    } else {
-        cout << "You are not authorized to carry this stick." << endl;
+void Player::carryStick(Stick* stick) {
+    if (!inventory.checkItem(stick)) {
+        cout << "You don't have this stick in your inventory." << endl;
+        return;
+    }
+    if (carryStickNumber<1){
+        if (stick->checkAuthorisations(m_name)){
+            m_attack += stick->getDamageBoost();
+            cout << "You're carrying " << stick->getItemName() << ". This stick is boosting your damage. You're dealing "<< m_attack << " damage now." << endl;
+            carryStickNumber +=1;
+        } else {
+            cout << "You are not authorized to carry this stick." << endl;
+        }
+    }else {
+        cout<< "You are already carrying a weapon... First you have to unequiped your weapon to carry another one. "<<endl;
     }
 }
 
-void Player::carryShield(Shield& shield) {
-    if (shield.checkAuthorisations(m_name)){
-        m_defense += shield.getBoostDefense();
-        cout << "You're carrying " << shield.getItemName() << ". This sword is boosting your damage. You're dealing "<< m_defense << " now." << endl;
-    } else {
-        cout << "You are not authorized to carry this stick." << endl;
+void Player::carryShield(Shield *shield) {
+    if (!inventory.checkItem(shield)) {
+        cout << "You don't have this shield in your inventory." << endl;
+        return;
+    }
+    if (carryShieldNumber<1){
+        if (shield->checkAuthorisations(m_name)){
+            m_defense += shield->getBoostDefense();
+            cout << "You're carrying " << shield->getItemName() << ". This shield is boosting your defense. You have  "<< m_defense << " defense now." << endl;
+            carryShieldNumber+=1;
+        } else {
+            cout << "You are not authorized to carry this shield." << endl;
+        }
+    }else {
+        cout<< "You are already carrying a shield... First you have to unequiped your shield to carry another one. "<<endl;
     }
 }
 

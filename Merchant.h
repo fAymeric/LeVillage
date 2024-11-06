@@ -14,10 +14,6 @@ class Merchant
     vector<Stick> merchandiseStick;
 public:
     Merchant();
-    void removeMerchandisePotion(Potion& Potion);
-    void removeMerchandiseSword(Sword& Sword);
-    void removeMerchandiseShield(Shield& Shield);
-    void removeMerchandiseStick(Stick& Stick);
     void sellMerchandise(Player &player);
 };
 
