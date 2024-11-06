@@ -6,5 +6,5 @@ Monster::Monster() {
     m_health = 60;
     m_maxHealth = 60;
     m_defense = 1;
-    m_gold = 5;
+    m_gold = 50;
 }

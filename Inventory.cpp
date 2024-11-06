@@ -28,7 +28,12 @@ void Inventory::addItem(Item* Item) {
 }
 
 void Inventory::removeItem(Item* Item){
-    Items.pop_back();
+    for (size_t i=0; i< Items.size(); ++i){
+        if (Item->getItemName() == Items[i].getItemName()) {
+            Items.erase(Items.begin() + i);
+            break;
+        }
+    }
 }
 
 void Inventory::displayInventory() {
