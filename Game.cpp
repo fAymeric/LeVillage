@@ -22,6 +22,14 @@ Shield* shield4 = new Shield("Astralia", 45, 100, 350);
 Stick* stick2 = new Stick("Grey Stick",15,100,100);// need to add dodge chance
 Stick* stick3 = new Stick("The DSK One",15,100,250);
 Stick* stick4 = new Stick("The Mysterious One",15,100,500);
+Sword Sword1;
+Stick Stick1;
+Shield Shield1;
+Hostel Hostel1;
+Merchant merchant;
+Mine Mine1;
+Potion Potion;
+City city1;
 
 void clearConsol() {
     system("cls");
@@ -36,8 +44,10 @@ Game::Game(){
         cout<<"hello adveturer its time to choose your class..."<<endl;
         cout<<"Warrior : 1"<< endl;
         cout<<"The warrior can equip 2 swords but can't equip shield or stick."<<endl;
+        cout<<"You also begin your adventure with 50% more power than the other class."<<endl;
         cout<<"Wizzard : 2"<< endl;
         cout<<"The wizzard can equip one stick but can't equip shield or sword."<<endl;
+        cout<< "You can also dodge in fight."<<endl;
         cout<<"Paladin : 3"<< endl;
         cout<<"The paladin can equip one sword and one shield but can't equip stick."<<endl;
         cin >> choice;
@@ -60,18 +70,9 @@ Game::Game(){
             }
         }
     }
-    City city1;
     city1.getRandName();
-    cout<< "You begin your adventure in the bright city of "<<city1.getCityName()<<endl;
-
-    Sword Sword1; // à mettre quand on tombe sur l'épée mais reste là pour les test
-    Stick Stick1;
-    Shield Shield1;
-    Hostel Hostel1;
-    Merchant merchant;
-    Mine Mine1;
-    Potion Potion;
     Hostel1.setResetLife(Perso1->GetMaxHealt());
+    cout<< "You begin your adventure in the bright city of "<<city1.getCityName()<<endl;
 
     while (1){
         cout<<"Now what you want to do ?"<<endl;
