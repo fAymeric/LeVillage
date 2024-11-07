@@ -34,13 +34,3 @@ int Mine::getMineNbr()
 {
     return m_mineNbr;
 }
-
-
-void Mine::setClearNeeded(int clearNeeded)
-{
-    m_clearNeeded = clearNeeded ;
-}
-int Mine::getClearNeeded()
-{
-    return m_clearNeeded;
-}

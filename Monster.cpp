@@ -8,3 +8,12 @@ Monster::Monster() {
     m_defense = 1;
     m_gold = 50;
 }
+
+Monster::Monster(string name, int attack, int health, int defense, int gold){
+    m_name = name;
+    m_attack = attack;
+    m_health = health;
+    m_maxHealth = m_health;
+    m_defense = defense;
+    m_gold = gold;
+}

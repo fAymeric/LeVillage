@@ -3,11 +3,13 @@
 
 
 
+#include "Player.h"
 class Game
 {
 public:
-    Game();
-    int GameStart();
+
+    void Play(Player* Player);
+
 };
 
 #endif // GAME_H

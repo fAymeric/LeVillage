@@ -7,7 +7,6 @@ class Mine : public Building
 protected:
     int m_niveau;
     int m_mineNbr;
-    int m_clearNeeded;
     int m_clearDone = 0;
 public:
     Mine();
@@ -15,8 +14,6 @@ public:
     int getMineNbr();
     int MonsterOnMine();
     void MineLevelUp();
-    void setClearNeeded(int clearNeeded);
-    int getClearNeeded();
     void clearMine();
     int getClearMine();
 };

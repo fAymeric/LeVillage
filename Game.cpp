@@ -4,10 +4,7 @@
 #include "Merchant.h"
 #include "Mine.h"
 #include "Monster.h"
-#include "Paladin.h"
 #include "Player.h"
-#include "Warrior.h"
-#include "Wizzard.h"
 #include <chrono>
 #include <iostream>
 #include <thread>
@@ -22,57 +19,32 @@ Shield* shield4 = new Shield("Astralia", 45, 100, 350);
 Stick* stick2 = new Stick("Grey Stick",15,100,100);// need to add dodge chance
 Stick* stick3 = new Stick("The DSK One",15,100,250);
 Stick* stick4 = new Stick("The Mysterious One",15,100,500);
-Player* Perso1 = new Player;
 Sword Sword1;
 Stick Stick1;
 Shield Shield1;
 Potion Potion;
 
 
-void clearConsolGame() {
+void clearConsol() {
     system("cls");
     this_thread::sleep_for(chrono::milliseconds(100));
+}
+
+int getRandNumber (int min, int max)
+{
+    return (rand()%(max-min+1)) +min;
 }
 
 int get_rand_number_mine (int min, int max)
 {
     return (rand()%(max-min+1)) +min;
 };
-Game::Game(){
+
+void Game::Play(Player* Perso1){
 
     string choice;
     int choiceInt;
     while(1){
-        cout<<"hello adveturer its time to choose your class..."<<endl;
-        cout<<"Warrior : 1"<< endl;
-        cout<<"The warrior can equip 2 swords but can't equip shield or stick."<<endl;
-        cout<<"You also begin your adventure with 50% more power than the other class."<<endl;
-        cout<<"Wizzard : 2"<< endl;
-        cout<<"The wizzard can equip one stick but can't equip shield or sword."<<endl;
-        cout<< "You can also dodge in fight."<<endl;
-        cout<<"Paladin : 3"<< endl;
-        cout<<"The paladin can equip one sword and one shield but can't equip stick."<<endl;
-        cin >> choice;
-        clearConsolGame();
-        if (choice == "Warrior" || choice == "Wizzard" || choice == "Paladin" || choice == "1" || choice == "2" || choice == "3"){
-            if (choice == "Warrior" || choice == "1"){
-                Perso1 = new Warrior();
-                cout<<"You choose Warrior"<<endl;
-                break;
-            }
-            if (choice == "Wizzard" || choice == "2"){
-                Perso1 = new Wizzard();
-                cout<<"You choose Wizzard"<<endl;
-                break;
-            }
-            if (choice == "Paladin" || choice == "3"){
-                Perso1 = new Paladin();
-                cout<<"You choose Paladin"<<endl;
-                break;
-            }
-        }
-    }
-    while (1){
         Hostel* Hostel1 = new Hostel;
         Merchant* Merchant1 = new Merchant;
         Mine* Mine1 = new Mine;
@@ -97,14 +69,10 @@ Game::Game(){
             cout<<"Go to Mine : 7 "<<"|| You have "<<Mine1->getClearMine()<<" / "<<Mine1->getMineNbr()<<" mine done."<<endl;
             cout<<"Change city : 9"<<endl;
             cin>>choice;
-            if ( choice == "1" || choice == "2" || choice == "3"|| choice=="4" || choice == "5"|| choice == "6"|| choice == "7"|| choice=="8"){
+            if ( choice == "1" || choice == "2" || choice == "3"|| choice=="4" || choice == "5"|| choice == "6"|| choice == "7"|| choice=="8"||choice =="9"){
                 if (choice=="9"){
                     if ((Mine1->getClearMine()==Mine1->getMineNbr())){
-                        delete Mine1;
-                        delete Hostel1;
-                        delete Merchant1;
-                        delete City1;
-                        delete Building1;
+                        break;
                     }else{
                         cout<<" You still have "<<Mine1->getMineNbr()<<" mines to clear before moving..."<<endl;
                     }
@@ -121,7 +89,7 @@ Game::Game(){
                     Perso1->removeItemToInventory(&Potion);
                 }
                 if ( choice == "4"){
-                    break;
+                    abort();
                 }
                 if ( choice == "5"){
                     while (1){
@@ -195,52 +163,164 @@ Game::Game(){
                     }else{
                         cout << "You enter into a mine and you will fight with " << Mine1->MonsterOnMine() << " monster !" << endl;
                         for (int j=0; j<Mine1->MonsterOnMine(); j++){
-                            Monster Goule;
-                            cout<<"You encounter a goule, the goule "<<j+1<<" went to have a fight"<<endl;
-                            while(1){
-                                cout<<"Hit : 1"<< endl;
-                                cout<<"Drink Potion : 2"<< endl;
-                                cout<<"Nothing : 3"<< endl;
-                                cin >> choice;
-                                if (choice == "1" || choice == "2" || choice == "3"){
-                                    if (choice == "1"){
-                                        clearConsolGame();
-                                        Perso1->HitCharactere(Goule);
-                                        cout<<Goule.GetName()<< j+1 <<" take damage : -"<<Perso1->GetAttack()/Goule.GetDefense()<<endl;
-                                        Goule.HitCharactere(*Perso1);
-                                        cout<<Perso1->GetName()<<" take damage : -"<<Goule.GetAttack()-Perso1->GetDefense()<<endl;
-                                        cout<<Perso1->GetName()<<" life : "<< Perso1->GetHealth()<<"/"<<Perso1->GetMaxHealt()<<endl;
-                                        cout<<Goule.GetName()<< j+1 <<" life : "<<Goule.GetHealth() <<"/"<<Goule.GetMaxHealt()<<endl;
-                                    }
-                                    if (choice =="2"){
-                                        clearConsol();
-                                        Perso1->usePotion(Potion);
-                                        Perso1->removeItemToInventory(&Potion);
-                                        cout<<Perso1->GetName()<<" recovery : +"<<Potion.getHeal()<<endl;
-                                        Goule.HitCharactere(*Perso1);
-                                        cout<<Perso1->GetName()<<" take damage : -"<<Goule.GetAttack()-Perso1->GetDefense()<<endl;
-                                        cout<<Goule.GetName()<< j+1 <<" life : "<< Goule.GetMaxHealt()<<"/"<<Goule.GetHealth()<<endl;
+                            Monster* monster = nullptr;
+                            Monster* monster2 = new Monster("goblin", 20, 50, 5, 25);
+                            Monster* monster3 = new Monster("Orc", 40, 70, 10, 40);
+                            int choix = getRandNumber(1, 3);
+                            switch (choix) {
+                            case 1:
+                                cout<<"You encounter a " << monster->GetName() <<j+1<<" went to have a fight"<<endl;
+                                while(1){
+                                    cout<<"Hit : 1"<< endl;
+                                    cout<<"Drink Potion : 2"<< endl;
+                                    cout<<"Nothing : 3"<< endl;
+                                    cin >> choice;
+                                    if (choice == "1" || choice == "2" || choice == "3"){
+                                        if (choice == "1"){
+                                            clearConsol();
+                                            Perso1->HitCharactere(*monster);
+                                            cout<<monster->GetName()<< j+1 <<" take damage : -"<<Perso1->GetAttack()-monster->GetDefense()<<endl;
+                                            if (!(monster->GetHealth()<=0)){
+                                            monster->HitCharactere(*Perso1);
+                                            cout<<Perso1->GetName()<<" take domage : -"<<monster->GetAttack()-Perso1->GetDefense()<<endl;
+                                            cout<<monster->GetName()<< j+1 <<" life : "<< monster->GetHealth()<<" / "<<monster->GetMaxHealt()<<endl;
+                                            }
+                                            cout<<Perso1->GetName()<<" life : "<< Perso1->GetHealth()<<" / "<<Perso1->GetMaxHealt()<<endl;
+                                        }
+                                        if (choice =="2"){
+                                            clearConsol();
+                                            Perso1->usePotion(Potion);
+                                            Perso1->removeItemToInventory(&Potion);
+                                            cout<<Perso1->GetName()<<" recovery : +"<<Potion.getHeal()<<endl;
+                                            monster->HitCharactere(*Perso1);
+                                            cout<<Perso1->GetName()<<" take domage : -"<<monster->GetAttack()-Perso1->GetDefense()<<endl;
+                                            cout<<monster->GetName()<< j+1 <<" life : "<< monster->GetHealth()<<" / "<<monster->GetMaxHealt()<<endl;
 
+                                        }
+                                        if (choice == "3"){
+                                            clearConsol();
+                                            monster->HitCharactere(*Perso1);
+                                            cout<<Perso1->GetName()<<" take domage : -"<<monster->GetAttack()-Perso1->GetDefense()<<endl;
+                                            cout<<Perso1->GetName()<<" life : "<< Perso1->GetHealth()<<" / "<<Perso1->GetMaxHealt()<<endl;
+                                            cout<<monster->GetName()<< j+1 <<" life : "<< monster->GetHealth()<<" / "<<monster->GetMaxHealt()<<endl;
+                                        }
                                     }
-                                    if (choice == "3"){
-                                        clearConsolGame();
-                                        Goule.HitCharactere(*Perso1);
-                                        cout<<Perso1->GetName()<<" take damage : -"<<Goule.GetAttack()-Perso1->GetDefense()<<endl;
-                                        cout<<Perso1->GetName()<<" life : "<< Perso1->GetMaxHealt()<<"/"<<Perso1->GetHealth()<<endl;
-                                        cout<<Goule.GetName()<< j+1 <<" life : "<< Goule.GetMaxHealt()<<"/"<<Goule.GetHealth()<<endl;
+                                    if (Perso1->GetHealth()<=0){
+                                        break;
+                                    }
+                                    if (monster->GetHealth()<=0){
+                                        cout<<"You killed "<<monster->GetName()<<" and get "<<monster->GetGold()<<" gold."<<endl;
+                                        Perso1->SetGold(Perso1->GetGold()+monster->GetGold());
+                                        break;
                                     }
                                 }
                                 if (Perso1->GetHealth()<=0){
-                                    break;
+                                    clearConsol();
+                                    cout<<"You are dead"<<endl;
+                                    abort();
                                 }
-                                if (Goule.GetHealth()<=0){
-                                    Perso1->SetGold(Perso1->GetGold()+Goule.GetGold());
-                                    break;
+                                break;
+                            case 2:
+                                cout<<"You encounter a " << monster2->GetName() <<j+1<<" went to have a fight"<<endl;
+                                while(1){
+                                    cout<<"Hit : 1"<< endl;
+                                    cout<<"Drink Potion : 2"<< endl;
+                                    cout<<"Nothing : 3"<< endl;
+                                    cin >> choice;
+                                    if (choice == "1" || choice == "2" || choice == "3"){
+                                        if (choice == "1"){
+                                            clearConsol();
+                                            Perso1->HitCharactere(*monster2);
+                                            cout<<monster2->GetName()<< j+1 <<" take domage : -"<<Perso1->GetAttack()-monster2->GetDefense()<<endl;
+                                            if (!(monster->GetHealth()<=0)){
+                                                monster3->HitCharactere(*Perso1);
+                                                cout<<Perso1->GetName()<<" take domage : -"<<monster->GetAttack()-Perso1->GetDefense()<<endl;
+                                                cout<<monster->GetName()<< j+1 <<" life : "<< monster->GetHealth()<<" / "<<monster->GetMaxHealt()<<endl;
+                                            }
+                                            cout<<Perso1->GetName()<<" life : "<< Perso1->GetHealth()<<" / "<<Perso1->GetMaxHealt()<<endl;
+                                        }
+                                        if (choice =="2"){
+                                            clearConsol();
+                                            Perso1->usePotion(Potion);
+                                            Perso1->removeItemToInventory(&Potion);
+                                            cout<<Perso1->GetName()<<" recovery : +"<<Potion.getHeal()<<endl;
+                                            monster2->HitCharactere(*Perso1);
+                                            cout<<Perso1->GetName()<<" take domage : -"<<monster2->GetAttack()-Perso1->GetDefense()<<endl;
+                                            cout<<monster2->GetName()<< j+1 <<" life : "<<monster2->GetHealth()<<" / "<< monster2->GetMaxHealt()<<endl;
+                                        }
+                                        if (choice == "3"){
+                                            clearConsol();
+                                            monster2->HitCharactere(*Perso1);
+                                            cout<<Perso1->GetName()<<" take domage : -"<<monster2->GetAttack()-Perso1->GetDefense()<<endl;
+                                            cout<<Perso1->GetName()<<" life : "<< Perso1->GetHealth()<<" / "<<Perso1->GetMaxHealt()<<endl;
+                                            cout<<monster2->GetName()<< j+1 <<" life : "<< monster2->GetHealth()<<" / "<< monster2->GetMaxHealt()<<endl;
+                                        }
+                                    }
+                                    if (Perso1->GetHealth()<=0){
+                                        break;
+                                    }
+                                    if (monster2->GetHealth()<=0){
+                                        delete monster2;
+                                        cout<<"You killed "<<monster2->GetName()<<" and get "<<monster2->GetGold()<<" gold."<<endl;
+                                        Perso1->SetGold(Perso1->GetGold()+monster2->GetGold());
+                                        break;
+                                    }
                                 }
-                            }
-                            if (Perso1->GetHealth()<=0){
-                                clearConsolGame();
-                                cout<<"You are dead"<<endl;
+                                if (Perso1->GetHealth()<=0){
+                                    clearConsol();
+                                    cout<<"You are dead"<<endl;
+                                    abort();
+                                }
+                                break;
+                            case 3:
+                                cout<<"You encounter a " << monster3->GetName() <<j+1<<" went to have a fight"<<endl;
+                                while(1){
+                                    cout<<"Hit : 1"<< endl;
+                                    cout<<"Drink Potion : 2"<< endl;
+                                    cout<<"Nothing : 3"<< endl;
+                                    cin >> choice;
+                                    if (choice == "1" || choice == "2" || choice == "3"){
+                                        if (choice == "1"){
+                                            clearConsol();
+                                            Perso1->HitCharactere(*monster3);
+                                            cout<<monster3->GetName()<< j+1 <<" take domage : -"<<Perso1->GetAttack()/monster3->GetDefense()<<endl;
+                                            monster3->HitCharactere(*Perso1);
+                                            cout<<Perso1->GetName()<<" take domage : -"<<monster3->GetAttack()/Perso1->GetDefense()<<endl;
+                                            cout<<Perso1->GetName()<<" life : "<< Perso1->GetHealth()<<" / "<<Perso1->GetMaxHealt()<<endl;
+                                            cout<<monster3->GetName()<< j+1 <<" life : "<< monster3->GetHealth()<<"/"<< monster3->GetMaxHealt()<<endl;
+                                        }
+                                        if (choice =="2"){
+                                            clearConsol();
+                                            Perso1->usePotion(Potion);
+                                            Perso1->removeItemToInventory(&Potion);
+                                            cout<<Perso1->GetName()<<" recovery : +"<<Potion.getHeal()<<endl;
+                                            monster3->HitCharactere(*Perso1);
+                                            cout<<Perso1->GetName()<<" take damage : -"<<monster3->GetAttack()-Perso1->GetDefense()<<endl;
+                                            cout<<monster3->GetName()<< j+1 <<" life : "<< monster3->GetHealth()<<"/"<< monster3->GetMaxHealt()<<endl;
+
+                                        }
+                                        if (choice == "3"){
+                                            clearConsol();
+                                            monster3->HitCharactere(*Perso1);
+                                            cout<<Perso1->GetName()<<" take domage : -"<<monster3->GetAttack()-Perso1->GetDefense()<<endl;
+                                            cout<<Perso1->GetName()<<" life : "<< Perso1->GetHealth()<<" / "<<Perso1->GetMaxHealt()<<endl;
+                                            cout<<monster3->GetName()<< j+1 <<" life : "<< monster3->GetHealth()<<"/"<< monster3->GetMaxHealt()<<endl;
+                                        }
+                                    }
+                                    if (Perso1->GetHealth()<=0){
+                                        break;
+                                    }
+                                    if (monster3->GetHealth()<=0){
+                                        cout<<"You killed "<<monster3->GetName()<<" and get "<<monster3->GetGold()<<" gold."<<endl;
+                                        Perso1->SetGold(Perso1->GetGold()+monster3->GetGold());
+                                        break;
+                                    }
+                                }
+                                if (Perso1->GetHealth()<=0){
+                                    clearConsol();
+                                    cout<<"You are dead"<<endl;
+                                    abort();
+                                }
                                 break;
                             }
                         }
@@ -299,9 +379,7 @@ Game::Game(){
                 }
             }
         }
-        delete Perso1;
     }
-
 };
 
 // to do : faire en sorte si possible que le joueur équipe qu'une épée si il en a qu'une dans l'inventaire (éviter la duplication)

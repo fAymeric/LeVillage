@@ -11,6 +11,18 @@ enum Name{
     Astropol,
     Chauss,
     Asaldur,
+    Midburgh,
+    Basinshire,
+    Lakehall,
+    Swanwich,
+    Starburgh,
+    Oxmeadow,
+    Starward,
+    Boulderbreach,
+    Springmouth,
+    Steepmaw,
+    Fearstrand,
+    Snakefield,
 };
 
 City::City() {}
@@ -25,8 +37,7 @@ void City::setRandCityName(int randCityName) {
     m_randCityName = randCityName;
 }
 void City::getRandName() {
-
-    setRandCityName(get_rand_number(1, 8));
+    setRandCityName(get_rand_number(0, 19));
     switch (m_randCityName) {
         case Partia: m_cityName = "Partia";
             break;
@@ -43,6 +54,30 @@ void City::getRandName() {
         case Chauss: m_cityName = "Chauss";
             break;
         case Asaldur: m_cityName = "Asaldur";
+            break;
+        case Midburgh: m_cityName = "Midburgh";
+            break;
+        case Basinshire: m_cityName = "Basinshire";
+            break;
+        case Lakehall: m_cityName = "Lakehall";
+            break;
+        case Swanwich: m_cityName = "Swanwich";
+            break;
+        case Starburgh: m_cityName = "Starburgh";
+            break;
+        case Oxmeadow: m_cityName = "Oxmeadow";
+            break;
+        case Starward: m_cityName = "Starward";
+            break;
+        case Boulderbreach: m_cityName = "Boulderbreach";
+            break;
+        case Springmouth: m_cityName = "Springmouth";
+            break;
+        case Steepmaw: m_cityName = "Steepmaw";
+            break;
+        case Fearstrand: m_cityName = "Fearstrand";
+            break;
+        case Snakefield: m_cityName = "Snakefield";
             break;
         }
 }
