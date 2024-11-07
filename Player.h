@@ -14,6 +14,7 @@ class Player : public Character
 protected:
     Inventory inventory;
     string m_classe;
+    int m_dodge;
 public:
     Player();
     void setRandStats();
@@ -32,6 +33,7 @@ public:
     void unequipSword(Sword* sword);
     void unequipStick(Stick* stick);
     void unequipShield(Shield* shield);
+    bool dodgeAttack();
 };
 
 #endif // PLAYER_H

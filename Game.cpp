@@ -188,9 +188,13 @@ void Game::Play(Player* Perso1){
                                             Perso1->HitCharactere(monster);
                                             cout<<monster.GetName()<< j+1 <<" take damage : -"<<Perso1->GetAttack()-monster.GetDefense()<<endl;
                                             if (!(monster.GetHealth()<=0)){
+                                                if (Perso1->dodgeAttack()==true){
+                                                    cout<<"The attack has been dodge"<<endl;
+                                                } else{
                                                 monster.HitCharactere(*Perso1);
                                                 cout<<Perso1->GetName()<<" take domage : -"<<monster.GetAttack()-Perso1->GetDefense()<<endl;
                                                 cout<<monster.GetName()<< j+1 <<" life : "<< monster.GetHealth()<<" / "<<monster.GetMaxHealt()<<endl;
+                                                }
                                             }
                                             cout<<Perso1->GetName()<<" life : "<< Perso1->GetHealth()<<" / "<<Perso1->GetMaxHealt()<<endl;
                                         }
@@ -240,9 +244,13 @@ void Game::Play(Player* Perso1){
                                             Perso1->HitCharactere(*monster2);
                                             cout<<monster2->GetName()<< j+1 <<" take domage : -"<<Perso1->GetAttack()-monster2->GetDefense()<<endl;
                                             if (!(monster2->GetHealth()<=0)){
+                                                if (Perso1->dodgeAttack()==true){
+                                                    cout<<"The attack has been dodge"<<endl;
+                                                } else{
                                                 monster2->HitCharactere(*Perso1);
                                                 cout<<Perso1->GetName()<<" take domage : -"<<monster2->GetAttack()-Perso1->GetDefense()<<endl;
                                                 cout<<monster2->GetName()<< j+1 <<" life : "<< monster2->GetHealth()<<" / "<<monster2->GetMaxHealt()<<endl;
+                                                }
                                             }
                                             cout<<Perso1->GetName()<<" life : "<< Perso1->GetHealth()<<" / "<<Perso1->GetMaxHealt()<<endl;
                                         }
@@ -291,9 +299,13 @@ void Game::Play(Player* Perso1){
                                             Perso1->HitCharactere(*monster3);
                                             cout<<monster3->GetName()<< j+1 <<" take domage : -"<<Perso1->GetAttack()-monster3->GetDefense()<<endl;
                                             if (!(monster3->GetHealth()<=0)){
+                                                if (Perso1->dodgeAttack()==true){
+                                                    cout<<"The attack has been dodge"<<endl;
+                                                } else{
                                                 monster3->HitCharactere(*Perso1);
                                                 cout<<Perso1->GetName()<<" take domage : -"<<monster3->GetAttack()-Perso1->GetDefense()<<endl;
                                                 cout<<monster3->GetName()<< j+1 <<" life : "<< monster3->GetHealth()<<"/"<< monster3->GetMaxHealt()<<endl;
+                                                }
                                             }
                                             cout<<Perso1->GetName()<<" life : "<< Perso1->GetHealth()<<" / "<<Perso1->GetMaxHealt()<<endl;
                                         }

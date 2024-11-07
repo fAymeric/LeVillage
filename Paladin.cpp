@@ -7,4 +7,5 @@ Paladin::Paladin() {
     m_maxHealth = 100;
     m_gold = 10;
     m_defense = 20;
+    m_dodge = 0;
 }

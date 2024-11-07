@@ -22,6 +22,12 @@ bool Player::payGold(int amount){
     return false;
 }
 
+int get_rand_number_dodge (int min, int max)
+{
+    return (rand()%(max-min+1)) +min;
+};
+
+
 void Player::unequipSword(Sword* sword) {
     if (carrySwordNumber >0){
         cout << "You unequip " << sword->getItemName() << ". You loose "<< sword->getDamageBoost() << " damage." << endl;
@@ -148,4 +154,11 @@ void Player::removeItemToInventory(Item* Item) {
 
 void Player::showInventory() {
     inventory.displayInventory();
+}
+
+bool Player::dodgeAttack(){
+    if (m_dodge == get_rand_number_dodge(1, 2)){
+        return true;
+    }
+    return false;
 }

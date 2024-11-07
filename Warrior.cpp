@@ -7,4 +7,5 @@ Warrior::Warrior() {
     m_maxHealth = 100;
     m_gold = 1000;
     m_defense = 5;
+    m_dodge = 0;
 }
