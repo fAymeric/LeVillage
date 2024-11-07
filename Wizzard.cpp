@@ -21,7 +21,7 @@ int get_rand_number_dodge (int min, int max)
 void Wizzard::setDodge(int dodgingNbr){
     m_dodge = dodgingNbr;
 }
-void Wizzard::Dodge()
+void Wizzard::Dodge(Player* Perso1)
 {
     int chanceToDodge = 1;
     setDodge(get_rand_number_dodge(1, 5));

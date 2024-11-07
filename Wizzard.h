@@ -9,7 +9,7 @@ class Wizzard: public Player
     int m_dodge;
 public:
     Wizzard();
-   void Dodge();
+   void Dodge(Player *Perso1);
    void setDodge(int dodgingNbr);
 };
 

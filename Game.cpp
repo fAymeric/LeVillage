@@ -41,19 +41,25 @@ int get_rand_number_mine (int min, int max)
 };
 
 void Game::Play(Player* Perso1){
-
+    int cityClear = 0;
     string choice;
     int choiceInt;
     while(1){
         Hostel* Hostel1 = new Hostel;
         Merchant* Merchant1 = new Merchant;
         Mine* Mine1 = new Mine;
-        City* City1 = new City;
+        City City1;
         Building* Building1 = new Building;
-        City1->getRandName();
+        City1.getRandName();
         Building1->randomBuildingNbr();
         Mine1->setMineNbr(get_rand_number_mine(1,5));
-        cout<< "You are in the bright city of "<<City1->getCityName()<<endl;
+        cout<< "Number of city free : "<<cityClear<<" / 3"<<endl;
+        if (cityClear == 3){
+            cout<<"You freed everyone from the monsters... You are a HERO !!!"<<endl;
+            cout<<"Good Job it's the end of the game."<<endl;
+            abort();
+        }
+        cout<< "You are in the bright city of "<<City1.getCityName()<<endl;
         Building1->displayBuilding();
         cout<<"- "<<Mine1->getMineNbr()<< " mines that you will have to clear."<<endl;
         cout<<"This city is in a big danger... You'll have to destroy all "<<Mine1->getMineNbr()<< " mines to go to the next city..."<<endl;
@@ -72,6 +78,7 @@ void Game::Play(Player* Perso1){
             if ( choice == "1" || choice == "2" || choice == "3"|| choice=="4" || choice == "5"|| choice == "6"|| choice == "7"|| choice=="8"||choice =="9"){
                 if (choice=="9"){
                     if ((Mine1->getClearMine()==Mine1->getMineNbr())){
+                        cityClear++;
                         break;
                     }else{
                         cout<<" You still have "<<Mine1->getMineNbr()<<" mines to clear before moving..."<<endl;
@@ -283,10 +290,9 @@ void Game::Play(Player* Perso1){
                                             clearConsol();
                                             Perso1->HitCharactere(*monster3);
                                             cout<<monster3->GetName()<< j+1 <<" take domage : -"<<Perso1->GetAttack()-monster3->GetDefense()<<endl;
-                                            if (!(monster2->GetHealth()<=0)){
+                                            if (!(monster3->GetHealth()<=0)){
                                                 monster3->HitCharactere(*Perso1);
                                                 cout<<Perso1->GetName()<<" take domage : -"<<monster3->GetAttack()-Perso1->GetDefense()<<endl;
-
                                                 cout<<monster3->GetName()<< j+1 <<" life : "<< monster3->GetHealth()<<"/"<< monster3->GetMaxHealt()<<endl;
                                             }
                                             cout<<Perso1->GetName()<<" life : "<< Perso1->GetHealth()<<" / "<<Perso1->GetMaxHealt()<<endl;

@@ -10,6 +10,7 @@ Player::Player() {}
 int carrySwordNumber = 0;
 int carryStickNumber = 0;
 int carryShieldNumber = 0;
+int inventoryPotion = 5;
 int choice;
 Sword sword;
 
@@ -53,16 +54,18 @@ void Player::unequipShield(Shield* shield) {
 
 void Player::usePotion(Potion& Potion) {
     if (Potion.checkAuthorisations(m_name)){
-    m_health += Potion.getHeal();
-    if (m_health > m_maxHealth) {
-        m_health = m_maxHealth;
-    }
-    cout << "You used a potion and gained " << Potion.getHeal() << " health points." << endl;
-    } else {
-        cout << "You are not authorized to use this potion." << endl;
+        if (inventoryPotion>0){
+            m_health += Potion.getHeal();
+            if (m_health > m_maxHealth) {
+                m_health = m_maxHealth;
+            }
+            cout << "You used a potion and gained " << Potion.getHeal() << " health points." << endl;
+            inventoryPotion--;
+        } else {
+            cout << "You don't have enough potions." << endl;
+        }
     }
 }
-
 void Player::carrySword(Sword* sword) {
     if (!inventory.checkItem(sword)) {
         cout << "You don't have this sword in your inventory." << endl;
@@ -133,6 +136,9 @@ void Player::carryShield(Shield *shield) {
 }
 
 void Player::addItemToInventory(Item* Item) {
+    if (Item->getItemName()=="Heal potion"){
+        inventoryPotion++;
+    }
     inventory.addItem(Item);
 }
 void Player::removeItemToInventory(Item* Item) {

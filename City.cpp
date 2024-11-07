@@ -81,9 +81,20 @@ void City::getRandName() {
             break;
         }
 }
+
+void City::cityClear()
+{
+    m_cityClear++;
+}
+
+int City::getCityClear(){
+    return m_cityClear;
+}
+
 void City::setCityName(std::string cityName) {
     m_cityName = cityName;
 }
 string City::getCityName() {
     return m_cityName;
 }
+

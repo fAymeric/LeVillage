@@ -19,6 +19,7 @@ public:
     void setRandStats();
     void displayInformations();
     void usePotion(Potion& potion);
+    void addPotionToInventory(Potion& potion);
     void addItemToInventory(Item* Item);
     void removeItemToInventory(Item* Item);
     void showInventory();
