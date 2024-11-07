@@ -1,13 +1,16 @@
 #ifndef MERCHANT_H
 #define MERCHANT_H
 
+#include "Building.h"
 #include "Player.h"
 #include "Potion.h"
 #include "Shield.h"
 #include "Stick.h"
 #include "Sword.h"
-class Merchant
+class Merchant: public Building
 {
+protected:
+    int m_merchantNbr;
     vector<Potion> merchandisePotion;
     vector<Sword> merchandiseSword;
     vector<Shield> merchandiseShield;
@@ -15,6 +18,8 @@ class Merchant
 public:
     Merchant();
     void sellMerchandise(Player &player);
+    void setMerchantNbr(int merchantNbr);
+    int getMerchantNbr();
 };
 
 #endif // MERCHANT_H

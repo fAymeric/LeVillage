@@ -20,3 +20,13 @@ bool Hostel::resetLifeToMax(Character& character, Player& player) {
    }
    return false;
 }
+
+void Hostel::setHostelNbr(int hostelNbr)
+{
+    m_hostelNbr = hostelNbr;
+}
+
+int Hostel::getHostelNbr()
+{
+    return m_hostelNbr;
+}

@@ -1,10 +1,13 @@
 #ifndef BUILDING_H
 #define BUILDING_H
 
-class Building
+#include "City.h"
+class Building: public City
 {
 public:
     Building();
+    void randomBuildingNbr();
+    void displayBuilding();
 };
 
 #endif // BUILDING_H

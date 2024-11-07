@@ -19,6 +19,17 @@ Merchant::Merchant() {
         merchandisePotion.push_back(potion);
     }
 }
+
+void Merchant::setMerchantNbr(int merchantNbr)
+{
+    m_merchantNbr = merchantNbr;
+}
+
+
+int Merchant::getMerchantNbr()
+{
+    return m_merchantNbr;
+}
 Weapon Weapon;
 
 void Merchant::sellMerchandise(Player& player)
