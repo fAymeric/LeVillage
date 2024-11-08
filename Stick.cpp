@@ -7,18 +7,24 @@ Stick::Stick() {
     m_price = 20;
     addAuthorizedClass("Wizzard");
 }
-Stick::Stick(string name, int damageBoost, int durability, int price){
+Stick::Stick(string name, int damageBoost, int durability, int price, int dodgeBoost){
     m_name = name;
     m_damageBoost = damageBoost;
     m_durability = durability;
     m_price = price;
+    m_dodgeBoost = dodgeBoost;
     addAuthorizedClass("Wizzard");
 }
 
-void Stick::setCarryStickNumber(int carryStickNumber)
+void Stick::setDodgeBoost(int dodgeBoost)
 {
-    m_carryStickNumber = carryStickNumber;
+    m_dodgeBoost = dodgeBoost;
 }
+
+int Stick::getDodgeBoost(){
+    return m_dodgeBoost;
+}
+
 void Stick::displayInformations() const {
     Weapon::displayInformations();
 }

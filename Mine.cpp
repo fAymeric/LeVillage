@@ -3,10 +3,6 @@
 Mine::Mine() {
     m_niveau = 1;
 }
-int get_rand_number_Mine (int min, int max)
-{
-    return (rand()%(max-min+1)) +min;
-};
 int fibonacci(int n) {
     if (n <= 1) return n;
     return fibonacci(n - 1) + fibonacci(n - 2);
@@ -21,7 +17,9 @@ void Mine::MineLevelUp(){
 void Mine::clearMine(){
     m_clearDone++;
 }
-
+void Mine::setClearMine(int clearMine){
+    m_clearDone = clearMine;
+}
 int Mine::getClearMine(){
     return m_clearDone;
 }

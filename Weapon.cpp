@@ -12,6 +12,6 @@ int Weapon::getDamageBoost(){
 
 void Weapon::displayInformations() const
 {
-    cout<< "There is the informations of the weapon : "<<"+"<< m_damageBoost<<" Damage add || "<<m_durability<< " Durability || " <<"The price is "<<m_price <<"gold ||"<<endl;
+    cout<<"|| "<<"+ "<< m_damageBoost<<" Damage || "<<m_durability<< " Durability || ";
 }
 

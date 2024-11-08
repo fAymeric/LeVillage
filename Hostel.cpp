@@ -3,7 +3,10 @@
 
 Hostel::Hostel() {
 }
-
+int get_rand_number_Hostel (int min, int max)
+{
+    return (rand()%(max-min+1)) +min;
+};
 void Hostel::setResetLife(int resetLife)
 {
     m_resetLife = resetLife;

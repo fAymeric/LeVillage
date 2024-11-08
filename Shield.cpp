@@ -32,5 +32,5 @@ void Shield::setCarryShieldNumber(int carryShieldNumber)
     m_carryShieldNumber = carryShieldNumber;
 }
 void Shield::displayInformations() const {
-    cout << "Shield Information: " << "Name: " << m_name << ", Defense Boost: +" << m_addDefense << ", Durability: " << m_durability << ", Price: " << m_price << " gold" << endl;
+    cout << "|| "<<"+ " << m_addDefense << " Defense || " << m_durability << " Durability ||";
 }

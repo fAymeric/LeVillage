@@ -11,14 +11,19 @@ Merchant::Merchant() {
     merchandiseShield.emplace_back("Iron Shield", 20, 100, 35);
     merchandiseShield.emplace_back("The Defender", 30, 100, 110);
     merchandiseShield.emplace_back("Astralia", 45, 100, 350);
-    merchandiseStick.emplace_back("Grey Stick", 15, 100, 100);
-    merchandiseStick.emplace_back("The DSK One", 15, 100, 250);
-    merchandiseStick.emplace_back("The Mysterious One", 15, 100, 500);
+    merchandiseStick.emplace_back("Grey Stick", 10, 100, 100, 1);
+    merchandiseStick.emplace_back("The DSK One", 15, 100, 250, 2);
+    merchandiseStick.emplace_back("The Mysterious One", 20, 100, 500, 3);
     for (int i = 0; i < 5; ++i) {
         Potion potion;
         merchandisePotion.push_back(potion);
     }
 }
+
+int get_rand_number_Merchant (int min, int max)
+{
+    return (rand()%(max-min+1)) +min;
+};
 
 void Merchant::setMerchantNbr(int merchantNbr)
 {
@@ -30,7 +35,7 @@ int Merchant::getMerchantNbr()
 {
     return m_merchantNbr;
 }
-Weapon Weapon;
+
 
 void Merchant::sellMerchandise(Player& player)
 {
@@ -62,7 +67,10 @@ void Merchant::sellMerchandise(Player& player)
             } break;
         case 2: cout << "I have these swords for you:" << endl;
             for (size_t i = 0; i < merchandiseSword.size(); ++i) {
-                cout << "Sword " << i+1 << ": " << merchandiseSword[i].getItemName() << " - " << merchandiseSword[i].getPrice() << " gold" << endl; merchandiseSword[i].displayInformations();
+                cout << "Sword " << i+1 << ": " << merchandiseSword[i].getItemName() << " - " << merchandiseSword[i].getPrice() << " gold" << endl;
+                cout<<"-----------------------------------"<<endl;
+                merchandiseSword[i].displayInformations();cout<<endl;
+                cout<<"-----------------------------------"<<endl;
             }
             cout << "Enter the number of the sword you want to buy (and press 0 to exit) : ";
             cin >> choice;
@@ -80,7 +88,11 @@ void Merchant::sellMerchandise(Player& player)
         case 3:
             cout << "I have these shields for you:" << endl;
             for (size_t i = 0; i < merchandiseShield.size(); ++i) {
-                cout << "Shield " << i+1 << ": " << merchandiseShield[i].getItemName() << " - " << merchandiseShield[i].getPrice() << " gold" << endl; merchandiseShield[i].displayInformations(); }
+                cout << "Shield " << i+1 << ": " << merchandiseShield[i].getItemName() << " - " << merchandiseShield[i].getPrice() << " gold" << endl;
+                cout<<"------------------------------------"<<endl;
+                merchandiseShield[i].displayInformations();cout<<endl;
+                cout<<"------------------------------------"<<endl;
+            }
             cout << "Enter the number of the shield you want to buy (and press 0 to exit) : ";
             cin >> choice;
             if (choice > 0 && choice <= merchandiseShield.size()) {
@@ -97,7 +109,10 @@ void Merchant::sellMerchandise(Player& player)
         case 4:
             cout << "I have these sticks for you:" << endl;
             for (size_t i = 0; i < merchandiseStick.size(); ++i) {
-                cout << "Stick " << i+1 << ": " << merchandiseStick[i].getItemName() << " - " << merchandiseStick[i].getPrice() << " gold" << endl; merchandiseStick[i].displayInformations();
+                cout << "Stick " << i+1 << ": " << merchandiseStick[i].getItemName() << " - " << merchandiseStick[i].getPrice() << " gold" << endl;
+                cout<<"---------------------------------------------------------"<<endl;
+                merchandiseStick[i].displayInformations(); cout<<"+ "<<merchandiseStick[i].getDodgeBoost()<<"Chance to dodge ||"<<endl;
+                cout<<"---------------------------------------------------------"<<endl;
             }
             cout << "Enter the number of the stick you want to buy (and press 0 to exit) : ";
             cin >> choice;

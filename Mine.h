@@ -15,6 +15,7 @@ public:
     int MonsterOnMine();
     void MineLevelUp();
     void clearMine();
+    void setClearMine(int clearMine);
     int getClearMine();
 };
 

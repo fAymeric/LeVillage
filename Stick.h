@@ -5,11 +5,12 @@
 
 class Stick: public Weapon
 {
+    int m_dodgeBoost;
 public:
-    int m_carryStickNumber = 0;
     Stick();
-    Stick(string name, int damageBoost, int durability, int price);
-    void setCarryStickNumber(int carryStickNumber);
+    Stick(string name, int damageBoost, int durability, int price, int dodgeBoost);
+    void setDodgeBoost(int dodgeBoost);
+    int getDodgeBoost();
     void displayInformations() const override;
 };
 

@@ -30,7 +30,7 @@ int get_rand_number_dodge (int min, int max)
 
 void Player::unequipSword(Sword* sword) {
     if (carrySwordNumber >0){
-        cout << "You unequip " << sword->getItemName() << ". You loose "<< sword->getDamageBoost() << " damage." << endl;
+        cout << "You unequip " << sword->getItemName() << ". You loose "<< sword->getDamageBoost() << " damage."<< " You're dealing "<< m_attack << " damage now."  << endl;
         m_attack -= sword->getDamageBoost();
         carrySwordNumber--;
     }else{
@@ -39,7 +39,7 @@ void Player::unequipSword(Sword* sword) {
 }
 void Player::unequipStick(Stick* stick) {
     if (carryStickNumber >0){
-        cout << "You unequip " << stick->getItemName() << ". You loose "<< stick->getDamageBoost() << " damage." << endl;
+        cout << "You unequip " << stick->getItemName() << ". You loose "<< stick->getDamageBoost() << " damage."<< " You're dealing "<< m_attack << " damage now."   << endl;
         m_attack -= stick->getDamageBoost();
         carryStickNumber--;
     }else{
@@ -50,7 +50,7 @@ void Player::unequipStick(Stick* stick) {
 
 void Player::unequipShield(Shield* shield) {
     if (carryShieldNumber >0){
-        cout << "You unequip " << shield->getItemName() << ". You loose "<< shield->getBoostDefense() << " defense." << endl;
+        cout << "You unequip " << shield->getItemName() << ". You loose "<< shield->getBoostDefense() << " defense."<< " You have "<< m_attack << " defense now."   << endl;
         m_attack -= shield->getBoostDefense();
         carryShieldNumber--;
     }else{
@@ -113,7 +113,9 @@ void Player::carryStick(Stick* stick) {
     if (carryStickNumber<1){
         if (stick->checkAuthorisations(m_name)){
             m_attack += stick->getDamageBoost();
+            m_dodge += stick->getDodgeBoost();
             cout << "You're carrying " << stick->getItemName() << ". This stick is boosting your damage. You're dealing "<< m_attack << " damage now." << endl;
+            cout << "This stick is also boosting your chance to dodge. You have now "<<m_dodge<< "chance / 5 to dodge the ennemy attack"<<endl;
             carryStickNumber +=1;
         } else {
             cout << "You are not authorized to carry this stick." << endl;
@@ -157,7 +159,7 @@ void Player::showInventory() {
 }
 
 bool Player::dodgeAttack(){
-    if (m_dodge == get_rand_number_dodge(1, 2)){
+    if (m_dodge == get_rand_number_dodge(1, 5)){
         return true;
     }
     return false;
