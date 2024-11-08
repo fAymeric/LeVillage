@@ -74,6 +74,7 @@ void Game::Play(Player* Perso1){
 
             cin>>choice;
             if ( choice == "1" || choice == "2" || choice == "3"|| choice=="4"||choice == "5"){
+                clearConsol();
                 if (choice=="1"){
                     while(1){
                         cout<<"What do you want to see about you ?"<<endl;
