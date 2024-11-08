@@ -91,9 +91,9 @@ void Game::Play(Player* Perso1){
                             Perso1->DisplayInformations();
                             break;
                         case 2:
-                            clearConsol();
-                            Perso1->showInventory();
                             while(1){
+                                clearConsol();
+                                Perso1->showInventory();
                                 cout<<"Drink Potion : 1"<<endl;
                                 cout<<"Equip Weapon : 2"<<endl;
                                 cout<<"Unequip Weapon : 3"<<endl;
