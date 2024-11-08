@@ -41,6 +41,7 @@ void Game::Play(Player* Perso1){
     string choice;
     int choiceInt;
     while(1){
+        clearConsol();
         Mine1->setClearMine(0);
         Hostel Hostel1;
         Merchant Merchant1;
@@ -75,6 +76,7 @@ void Game::Play(Player* Perso1){
             if ( choice == "1" || choice == "2" || choice == "3"|| choice=="4"||choice == "5"){
                 if (choice=="1"){
                     while(1){
+                        clearConsol();
                         cout<<"What do you want to see about you ?"<<endl;
                         cout<<"Check stats : 1"<< endl;
                         cout<<"Check inventory : 2"<< endl;
@@ -85,9 +87,11 @@ void Game::Play(Player* Perso1){
                         }
                         switch (choiceInt){
                         case 1:
+                            clearConsol();
                             Perso1->DisplayInformations();
                             break;
                         case 2:
+                            clearConsol();
                             Perso1->showInventory();
                             while(1){
                                 cout<<"Drink Potion : 1"<<endl;
@@ -100,6 +104,7 @@ void Game::Play(Player* Perso1){
                                 }
                                 switch (choiceInt){
                                 case 1:
+                                    clearConsol();
                                     Perso1->usePotion(Potion);
                                     Perso1->removeItemToInventory(&Potion);
                                     break;
@@ -210,6 +215,7 @@ void Game::Play(Player* Perso1){
                     }
                 }
                 if (choice == "2"){
+                    clearConsol();
                     while(1){
                         cout<<"You are now in the main place of the village."<<endl;
                         if (Merchant1.getMerchantNbr()>0){
@@ -228,6 +234,7 @@ void Game::Play(Player* Perso1){
                             }
                         switch(choiceInt){
                         case 1:
+                            clearConsol();
                             if (Merchant1.getMerchantNbr()>0){
                                 Merchant1.sellMerchandise(*Perso1);
                             }else{
@@ -236,10 +243,11 @@ void Game::Play(Player* Perso1){
                             }
                             break;
                         case 2:
+                            clearConsol();
                             if (Hostel1.getHostelNbr()>0){
                                 cout << "Do you want to stay at the hostel to heal up for 10 gold ?  Y/n "<<endl;
                                 cin>>choice;
-                                if (choice == "Y"){
+                                if (choice == "Y"||choice =="y"){
                                     Hostel1.setResetLife(Perso1->GetMaxHealt());
                                     if (Hostel1.resetLifeToMax(*Perso1, *Perso1)) {
                                         cout << "You stayed at the hostel and paid 10 gold. Your health is now " << Perso1->GetHealth() << endl;
@@ -256,19 +264,9 @@ void Game::Play(Player* Perso1){
                     }
                 }
                 if (choice == "3"){
+                    clearConsol();
                     if (Mine1->getClearMine()==Mine1->getMineNbr()){
                         cout<<"There is no mine left... You saved this city"<<endl;
-                        cout<<"Do you want to go save another city ?"<<endl;
-                        cout<<"1 : Yes"<<endl;
-                        cout<<"2 : No"<<endl;
-                        cin>>choiceInt;
-                        switch(choiceInt){
-                        case 1:
-                            if ((Mine1->getClearMine()==Mine1->getMineNbr())){
-                                cityClear++;
-                                break;
-                            }
-                        }
                     }else{
                         cout << "You enter into a mine and you will fight with " << Mine1->MonsterOnMine() << " monster !" << endl;
                         for (int j=0; j<Mine1->MonsterOnMine(); j++){
@@ -451,6 +449,7 @@ void Game::Play(Player* Perso1){
                     }
                 }
                 if (choice == "4"){
+                    clearConsol();
                     if ((Mine1->getClearMine()==Mine1->getMineNbr())){
                         cityClear++;
                         break;
