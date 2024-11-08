@@ -7,6 +7,7 @@ SOURCES += \
         Building.cpp \
         Character.cpp \
         City.cpp \
+        Equipment.cpp \
         Game.cpp \
         Hostel.cpp \
         Inventory.cpp \
@@ -29,6 +30,7 @@ HEADERS += \
     Building.h \
     Character.h \
     City.h \
+    Equipment.h \
     Game.h \
     Hostel.h \
     Inventory.h \

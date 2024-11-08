@@ -33,7 +33,6 @@ public:
     int GetDefense();
     void DisplayInformations();
     void HitCharactere (Character& receveur);
-
 };
 
 #endif // CHARACTER_H

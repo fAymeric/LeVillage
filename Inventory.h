@@ -1,7 +1,7 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
 
-#include "Potion.h"
+#include "Item.h"
 #include <vector>
 using namespace std;
 

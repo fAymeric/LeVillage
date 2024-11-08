@@ -1,14 +1,11 @@
 #include "Inventory.h"
 #include <cstddef>
-#include <algorithm>
 #include <iostream>
 #include "Potion.h"
 #include "Shield.h"
 #include "Stick.h"
 #include "Sword.h"
 using namespace std;
-
-string choice;
 
 Inventory::Inventory() {
     Potion Potion;
@@ -39,7 +36,7 @@ void Inventory::removeItem(Item* Item){
 void Inventory::displayInventory() {
     cout << "Inventory contains:" << endl;
     for (size_t i = 0; i < Items.size(); ++i) {
-        cout << "Potion " << i+1 << ": " << Items[i].getItemName()<< endl;
+        cout << "Item " << i+1 << ": " << Items[i].getItemName()<< endl;
     }
 }
 

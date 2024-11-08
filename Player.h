@@ -1,6 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "Character.h"
+#include "Equipment.h"
 #include "Inventory.h"
 #include "Potion.h"
 #include "Shield.h"
@@ -13,14 +14,12 @@ class Player : public Character
 {
 protected:
     Inventory inventory;
+    Equipment equipment;
     string m_classe;
     int m_dodge;
 public:
     Player();
-    void setRandStats();
-    void displayInformations();
     void usePotion(Potion& potion);
-    void addPotionToInventory(Potion& potion);
     void addItemToInventory(Item* Item);
     void removeItemToInventory(Item* Item);
     void showInventory();
@@ -34,6 +33,7 @@ public:
     void unequipStick(Stick* stick);
     void unequipShield(Shield* shield);
     bool dodgeAttack();
+    void displayEquipment();
 };
 
 #endif // PLAYER_H

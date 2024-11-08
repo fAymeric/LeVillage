@@ -47,7 +47,6 @@ void Merchant::sellMerchandise(Player& player)
 {
     int choice;
     while (1) {
-        clearConsolMerch();
         cout << "What do you want to see, adventurer?" << endl;
         cout << "1: Potions" << endl;
         cout << "2: Swords" << endl;

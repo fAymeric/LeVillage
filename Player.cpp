@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Equipment.h"
 #include "Potion.h"
 #include "Shield.h"
 #include "Stick.h"
@@ -30,18 +31,30 @@ int get_rand_number_dodge (int min, int max)
 
 void Player::unequipSword(Sword* sword) {
     if (carrySwordNumber >0){
-        cout << "You unequip " << sword->getItemName() << ". You loose "<< sword->getDamageBoost() << " damage."<< " You're dealing "<< m_attack << " damage now."  << endl;
+        if (!equipment.checkEquipment(sword)) {
+            cout << "You don't have this sword equiped." << endl;
+            return;
+        }
+        cout << "You unequip " << sword->getItemName() << ". You loose "<< sword->getDamageBoost() << " damage. You're dealing "<< m_attack << " damage now."  << endl;
         m_attack -= sword->getDamageBoost();
         carrySwordNumber--;
+        equipment.removeEquipment(sword);
+        inventory.addItem(sword);
     }else{
         cout<<"You have nothing to unequip..."<<endl;
     }
 }
 void Player::unequipStick(Stick* stick) {
     if (carryStickNumber >0){
-        cout << "You unequip " << stick->getItemName() << ". You loose "<< stick->getDamageBoost() << " damage."<< " You're dealing "<< m_attack << " damage now."   << endl;
+        if (!equipment.checkEquipment(stick)) {
+            cout << "You don't have this stick equiped." << endl;
+            return;
+        }
+        cout << "You unequip " << stick->getItemName() << ". You loose "<< stick->getDamageBoost() << " damage. You're dealing "<< m_attack << " damage now."   << endl;
         m_attack -= stick->getDamageBoost();
         carryStickNumber--;
+        equipment.removeEquipment(stick);
+        inventory.addItem(stick);
     }else{
         cout<<"You have nothing to unequip..."<<endl;
     }
@@ -50,9 +63,15 @@ void Player::unequipStick(Stick* stick) {
 
 void Player::unequipShield(Shield* shield) {
     if (carryShieldNumber >0){
-        cout << "You unequip " << shield->getItemName() << ". You loose "<< shield->getBoostDefense() << " defense."<< " You have "<< m_attack << " defense now."   << endl;
+        if (!equipment.checkEquipment(shield)) {
+            cout << "You don't have this shield equiped." << endl;
+            return;
+        }
+        cout << "You unequip " << shield->getItemName() << ". You loose "<< shield->getBoostDefense() << " defense. You have "<< m_defense << " defense now."   << endl;
         m_attack -= shield->getBoostDefense();
         carryShieldNumber--;
+        equipment.removeEquipment(shield);
+        inventory.addItem(shield);
     }else{
         cout<<"You have nothing to unequip..."<<endl;
     }
@@ -82,6 +101,8 @@ void Player::carrySword(Sword* sword) {
             if (sword->checkAuthorisations(m_name)){
                 m_attack += sword->getDamageBoost();
                 cout << "You're carrying " << sword->getItemName() << ". This sword is boosting your damage. You're dealing "<< m_attack << " damage now." << endl;
+                inventory.removeItem(sword);
+                equipment.addEquipment(sword);
                 carrySwordNumber += 1;
             } else {
                 cout << "You are not authorized to carry this sword." << endl;
@@ -116,6 +137,8 @@ void Player::carryStick(Stick* stick) {
             m_dodge += stick->getDodgeBoost();
             cout << "You're carrying " << stick->getItemName() << ". This stick is boosting your damage. You're dealing "<< m_attack << " damage now." << endl;
             cout << "This stick is also boosting your chance to dodge. You have now "<<m_dodge<< "chance / 5 to dodge the ennemy attack"<<endl;
+            inventory.removeItem(stick);
+            equipment.addEquipment(stick);
             carryStickNumber +=1;
         } else {
             cout << "You are not authorized to carry this stick." << endl;
@@ -134,6 +157,8 @@ void Player::carryShield(Shield *shield) {
         if (shield->checkAuthorisations(m_name)){
             m_defense += shield->getBoostDefense();
             cout << "You're carrying " << shield->getItemName() << ". This shield is boosting your defense. You have  "<< m_defense << " defense now." << endl;
+            inventory.removeItem(shield);
+            equipment.addEquipment(shield);
             carryShieldNumber+=1;
         } else {
             cout << "You are not authorized to carry this shield." << endl;
@@ -158,9 +183,14 @@ void Player::showInventory() {
     inventory.displayInventory();
 }
 
+void Player::displayEquipment(){
+    equipment.displayEquipment();
+}
+
 bool Player::dodgeAttack(){
     if (m_dodge == get_rand_number_dodge(1, 5)){
         return true;
     }
     return false;
 }
+

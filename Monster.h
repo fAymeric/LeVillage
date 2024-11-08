@@ -8,7 +8,6 @@ class Monster: public Character
 public:
     Monster();
     Monster(string name, int attack, int health, int defense, int gold);
-    void DisplayInformations() const;
 };
 
 #endif // MONSTER_H

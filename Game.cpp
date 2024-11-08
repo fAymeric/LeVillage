@@ -83,6 +83,7 @@ void Game::Play(Player* Perso1){
                         cout<<"Exit : 3"<<endl;
                         cin>>choiceInt;
                         if (choiceInt == 3){
+                            clearConsol();
                             break;
                         }
                         switch (choiceInt){
@@ -92,8 +93,8 @@ void Game::Play(Player* Perso1){
                             break;
                         case 2:
                             while(1){
-                                clearConsol();
                                 Perso1->showInventory();
+                                Perso1->displayEquipment();
                                 cout<<"Drink Potion : 1"<<endl;
                                 cout<<"Equip Weapon : 2"<<endl;
                                 cout<<"Unequip Weapon : 3"<<endl;
@@ -229,6 +230,7 @@ void Game::Play(Player* Perso1){
                         cout<<"Exit : 3"<<endl;
                         cin >> choiceInt;
                         if (choiceInt == 3){
+                            clearConsol();
                                 break;
                             }
                         switch(choiceInt){
