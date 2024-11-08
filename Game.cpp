@@ -76,7 +76,6 @@ void Game::Play(Player* Perso1){
             if ( choice == "1" || choice == "2" || choice == "3"|| choice=="4"||choice == "5"){
                 if (choice=="1"){
                     while(1){
-                        clearConsol();
                         cout<<"What do you want to see about you ?"<<endl;
                         cout<<"Check stats : 1"<< endl;
                         cout<<"Check inventory : 2"<< endl;
@@ -104,7 +103,6 @@ void Game::Play(Player* Perso1){
                                 }
                                 switch (choiceInt){
                                 case 1:
-                                    clearConsol();
                                     Perso1->usePotion(Potion);
                                     Perso1->removeItemToInventory(&Potion);
                                     break;
