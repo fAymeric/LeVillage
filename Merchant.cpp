@@ -8,14 +8,14 @@
 
 Merchant::Merchant() {
     merchandiseSword.emplace_back("Iron Sword", 20, 100, 45);
-    merchandiseSword.emplace_back("Dragon Slayer", 70, 100, 200);
-    merchandiseSword.emplace_back("Shadow Blade", 60, 100, 140);
+    merchandiseSword.emplace_back("Dragon Slayer", 70, 100, 140);
+    merchandiseSword.emplace_back("Shadow Blade", 60, 100, 100);
     merchandiseShield.emplace_back("Iron Shield", 20, 100, 35);
-    merchandiseShield.emplace_back("The Defender", 30, 100, 110);
-    merchandiseShield.emplace_back("Astralia", 45, 100, 350);
+    merchandiseShield.emplace_back("The Defender", 30, 100, 100);
+    merchandiseShield.emplace_back("Astralia", 45, 100, 150);
     merchandiseStick.emplace_back("Grey Stick", 10, 100, 100, 1);
-    merchandiseStick.emplace_back("The DSK One", 15, 100, 250, 2);
-    merchandiseStick.emplace_back("The Mysterious One", 20, 100, 500, 3);
+    merchandiseStick.emplace_back("The DSK One", 15, 100, 150, 2);
+    merchandiseStick.emplace_back("The Mysterious One", 20, 100, 200, 3);
     for (int i = 0; i < 5; ++i) {
         Potion potion;
         merchandisePotion.push_back(potion);
@@ -55,7 +55,7 @@ void Merchant::sellMerchandise(Player& player)
         cout << "5: Exit" << endl;
         cin >> choice;
         switch (choice) {
-        case 1:
+        case 1: // merch for potions
             clearConsolMerch();
             cout << "I have these potions for you:" << endl;
             for (size_t i = 0; i < merchandisePotion.size(); ++i) {
@@ -73,7 +73,7 @@ void Merchant::sellMerchandise(Player& player)
                     cout << "You don't have enough gold!" << endl;
                 }
             } break;
-        case 2:
+        case 2: // merch for swords
             clearConsolMerch();
             cout << "I have these swords for you:" << endl;
             for (size_t i = 0; i < merchandiseSword.size(); ++i) {
@@ -95,7 +95,7 @@ void Merchant::sellMerchandise(Player& player)
                 }
             }
             break;
-        case 3:
+        case 3:// merch for shields
             clearConsolMerch();
             cout << "I have these shields for you:" << endl;
             for (size_t i = 0; i < merchandiseShield.size(); ++i) {
@@ -117,7 +117,7 @@ void Merchant::sellMerchandise(Player& player)
                 }
             }
             break;
-        case 4:
+        case 4:// merch for stick
             clearConsolMerch();
             cout << "I have these sticks for you:" << endl;
             for (size_t i = 0; i < merchandiseStick.size(); ++i) {

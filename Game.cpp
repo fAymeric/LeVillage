@@ -11,14 +11,14 @@
 using namespace std;
 
 Sword* sword2 = new Sword("Iron Sword", 20, 100, 45);
-Sword* sword3 = new Sword("Dragon Slayer", 70, 100, 200);
-Sword* sword4 = new Sword("Shadow Blade", 60, 100, 140);
+Sword* sword3 = new Sword("Dragon Slayer", 70, 100, 140);
+Sword* sword4 = new Sword("Shadow Blade", 60, 100, 100);
 Shield* shield2 = new Shield("Iron Shield", 20, 100, 35);
-Shield* shield3 = new Shield("The Defender", 30, 100, 110);
-Shield* shield4 = new Shield("Astralia", 45, 100, 350);
+Shield* shield3 = new Shield("The Defender", 30, 100, 100);
+Shield* shield4 = new Shield("Astralia", 45, 100, 150);
 Stick* stick2 = new Stick("Grey Stick",10,100,100,1);// need to add dodge chance
-Stick* stick3 = new Stick("The DSK One",15,100,250,2);
-Stick* stick4 = new Stick("The Mysterious One",20,100,500,3);
+Stick* stick3 = new Stick("The DSK One",15,100,150,2);
+Stick* stick4 = new Stick("The Mysterious One",20,100,200,3);
 Sword Sword1;
 Stick Stick1;
 Shield Shield1;
@@ -48,9 +48,9 @@ void Game::Play(Player* Perso1){
         City City1;
         Building Building1;
         City1.getRandName();
-        Mine1->setMineNbr(getRandNumber(1,5));
-        Merchant1.setMerchantNbr(getRandNumber(0,5));
-        Hostel1.setHostelNbr(getRandNumber(0,5));
+        Mine1->setMineNbr(Building1.get_rand_number_building(1,5));
+        Merchant1.setMerchantNbr(Building1.get_rand_number_building(0,5));
+        Hostel1.setHostelNbr(Building1.get_rand_number_building(0,5));
         cout<< "Number of city free : "<<cityClear<<" / 3"<<endl;
         if (cityClear == 3){
             cout<<"You freed everyone from the monsters... You are a HERO !!!"<<endl;
@@ -60,7 +60,7 @@ void Game::Play(Player* Perso1){
         cout<< "You are in the bright city of "<<City1.getCityName()<<endl;
         cout<< "In This city you will find"<<endl;
         cout<<"- "<<Merchant1.getMerchantNbr()<< " store where you can find some items to buy.."<<endl;
-        cout<<"- "<<Hostel1.getHostelNbr()<< " hostels whereyou can... sleep... yeah that's all..."<<endl;
+        cout<<"- "<<Hostel1.getHostelNbr()<< " hostels where you can... sleep... yeah that's all..."<<endl;
         cout<<"- "<<Mine1->getMineNbr()<< " mines that you will have to clear."<<endl;
         cout<<"This city is in a big danger... You'll have to destroy all "<<Mine1->getMineNbr()<< " mines to go to the next city..."<<endl;
 
@@ -76,7 +76,7 @@ void Game::Play(Player* Perso1){
             if ( choice == "1" || choice == "2" || choice == "3"|| choice=="4"||choice == "5"){
                 clearConsol();
                 if (choice=="1"){
-                    while(1){
+                    while(1){ // character informations
                         cout<<"What do you want to see about you ?"<<endl;
                         cout<<"Check stats : 1"<< endl;
                         cout<<"Check inventory : 2"<< endl;
@@ -87,11 +87,11 @@ void Game::Play(Player* Perso1){
                             break;
                         }
                         switch (choiceInt){
-                        case 1:
+                        case 1: //DisplayInformations
                             clearConsol();
                             Perso1->DisplayInformations();
                             break;
-                        case 2:
+                        case 2: // inventory section
                             while(1){
                                 Perso1->showInventory();
                                 Perso1->displayEquipment();
@@ -108,7 +108,7 @@ void Game::Play(Player* Perso1){
                                     Perso1->usePotion(Potion);
                                     Perso1->removeItemToInventory(&Potion);
                                     break;
-                                case 2:
+                                case 2: // equip item
                                     while (1){
                                         cout << "What do you want to equip ? (0 for Exit) "<< endl;
                                         cout<<"(You need the full name of the equipement without space ex : For Wooden Sword -> WoodenSword)"<<endl;
@@ -159,7 +159,7 @@ void Game::Play(Player* Perso1){
                                         break;
                                     }
                                     break;
-                                case 3:
+                                case 3:// unequip item
                                     while (1){
                                         cout << "What item do you want to unequip ? (0 to exit) "<< endl;
                                         cout<<"(You need the full name of the Item without space ex : For Wooden Sword -> WoodenSword)"<<endl;
@@ -214,7 +214,7 @@ void Game::Play(Player* Perso1){
                         }
                     }
                 }
-                if (choice == "2"){
+                if (choice == "2"){// the village
                     clearConsol();
                     while(1){
                         cout<<"You are now in the main place of the village."<<endl;
@@ -234,7 +234,7 @@ void Game::Play(Player* Perso1){
                                 break;
                             }
                         switch(choiceInt){
-                        case 1:
+                        case 1: //merchant
                             clearConsol();
                             if (Merchant1.getMerchantNbr()>0){
                                 Merchant1.sellMerchandise(*Perso1);
@@ -243,7 +243,7 @@ void Game::Play(Player* Perso1){
                                 cout<<" It seems that there is no shop here..."<<endl;
                             }
                             break;
-                        case 2:
+                        case 2:// hostel
                             clearConsol();
                             if (Hostel1.getHostelNbr()>0){
                                 cout << "Do you want to stay at the hostel to heal up for 10 gold ?  Y/n "<<endl;
@@ -264,7 +264,7 @@ void Game::Play(Player* Perso1){
                         }
                     }
                 }
-                if (choice == "3"){
+                if (choice == "3"){ //the mine
                     clearConsol();
                     if (Mine1->getClearMine()==Mine1->getMineNbr()){
                         cout<<"There is no mine left... You saved this city"<<endl;
@@ -272,11 +272,11 @@ void Game::Play(Player* Perso1){
                         cout << "You enter into a mine and you will fight with " << Mine1->MonsterOnMine() << " monster !" << endl;
                         for (int j=0; j<Mine1->MonsterOnMine(); j++){
                             Monster monster;
-                            Monster* monster2 = new Monster("goblin", 20, 50, 5, 25);
-                            Monster* monster3 = new Monster("Orc", 30, 70, 10, 40);
+                            Monster* monster2 = new Monster("goblin", 15, 50, 5, 25);
+                            Monster* monster3 = new Monster("Orc", 20, 70, 10, 40);
                             int choix = getRandNumber(1, 3);
                             switch (choix) {
-                            case 1:
+                            case 1: // fight a ghoul
                                 cout<<"You encounter a " << monster.GetName() <<j+1<<" went to have a fight"<<endl;
                                 while(1){
                                     cout<<"Hit : 1"<< endl;
@@ -332,7 +332,7 @@ void Game::Play(Player* Perso1){
                                     abort();
                                 }
                                 break;
-                            case 2:
+                            case 2: // fight a goblin
                                 cout<<"You encounter a " << monster2->GetName() <<j+1<<" went to have a fight"<<endl;
                                 while(1){
                                     cout<<"Hit : 1"<< endl;
@@ -387,7 +387,7 @@ void Game::Play(Player* Perso1){
                                     abort();
                                 }
                                 break;
-                            case 3:
+                            case 3:// fight a orc
                                 cout<<"You encounter a " << monster3->GetName() <<j+1<<" went to have a fight"<<endl;
                                 while(1){
                                     cout<<"Hit : 1"<< endl;
@@ -445,7 +445,7 @@ void Game::Play(Player* Perso1){
                                 break;
                             }
                         }
-                        Mine1->MineLevelUp();
+                        Mine1->MineLevelUp(); //adding a level for fibonacci
                         Mine1->clearMine() ;
                     }
                 }

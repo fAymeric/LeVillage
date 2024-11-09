@@ -6,8 +6,7 @@ class Building: public City
 {
 public:
     Building();
-    void randomBuildingNbr();
-    void displayBuilding();
+    int get_rand_number_building(int min, int max);
 };
 
 #endif // BUILDING_H

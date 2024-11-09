@@ -22,7 +22,7 @@ int Item::getPrice(){
 int Item::getDurability(){
     return m_durability;
 }
-void Item::addAuthorizedClass(const string& classe) {
+void Item::addAuthorizedClass(const string& classe) { // adding authorisations
     authorizedClasses.push_back(classe);
 }
 bool Item::checkAuthorisations(const string& classe)

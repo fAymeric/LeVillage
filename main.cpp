@@ -14,7 +14,6 @@ int main()
 {
     Game* Game = nullptr;
     Player* Perso1 = nullptr;
-    srand(static_cast<unsigned int>(time(0))); // initialise the random possibility
     string choice;
     cout<<"Hello Adventurer... Are you ok ? We've found you near the river and it seems that you needed help..."<<endl;
     cout<<"We Need your help to free our territory from the monsters..."<<endl;

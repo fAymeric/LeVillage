@@ -29,6 +29,7 @@ int get_rand_number_dodge (int min, int max)
 };
 
 
+//there is the unequip system
 void Player::unequipSword(Sword* sword) {
     if (carrySwordNumber >0){
         if (!equipment.checkEquipment(sword)) {
@@ -60,6 +61,20 @@ void Player::unequipStick(Stick* stick) {
     }
 }
 
+void Player::usePotion(Potion& Potion) {
+    if (Potion.checkAuthorisations(m_name)){
+        if (inventoryPotion>0){
+            m_health += Potion.getHeal();
+            if (m_health > m_maxHealth) {
+                m_health = m_maxHealth;
+            }
+            cout << "You used a potion and gained " << Potion.getHeal() << " health points." << endl;
+            inventoryPotion--;
+        } else {
+            cout << "You don't have enough potions." << endl;
+        }
+    }
+}
 
 void Player::unequipShield(Shield* shield) {
     if (carryShieldNumber >0){
@@ -77,20 +92,7 @@ void Player::unequipShield(Shield* shield) {
     }
 }
 
-void Player::usePotion(Potion& Potion) {
-    if (Potion.checkAuthorisations(m_name)){
-        if (inventoryPotion>0){
-            m_health += Potion.getHeal();
-            if (m_health > m_maxHealth) {
-                m_health = m_maxHealth;
-            }
-            cout << "You used a potion and gained " << Potion.getHeal() << " health points." << endl;
-            inventoryPotion--;
-        } else {
-            cout << "You don't have enough potions." << endl;
-        }
-    }
-}
+//and there the equip system
 void Player::carrySword(Sword* sword) {
     if (!inventory.checkItem(sword)) {
         cout << "You don't have this sword in your inventory." << endl;

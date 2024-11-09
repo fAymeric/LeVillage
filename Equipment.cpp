@@ -25,7 +25,7 @@ bool Equipment::checkEquipment(Item* Item) {
 
 void Equipment::removeEquipment(Item* Item){
     for (size_t i=0; i< equipedItems.size(); ++i){
-        if (Item->getItemName() == equipedItems[i].getItemName()) {
+        if (Item->getItemName() == equipedItems[i].getItemName()) { // looking for the name to remove the item
             equipedItems.erase(equipedItems.begin() + i);
             break;
         }

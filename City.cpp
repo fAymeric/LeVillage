@@ -2,7 +2,7 @@
 #include <cstdlib>
 
 
-enum Name{
+enum Name{ //all city name
     Partia,
     Astram,
     Lastrum,

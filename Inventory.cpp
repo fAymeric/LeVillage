@@ -7,7 +7,7 @@
 #include "Sword.h"
 using namespace std;
 
-Inventory::Inventory() {
+Inventory::Inventory() { //initialise a basic inventory
     Potion Potion;
     Sword Sword;
     Shield Shield;
@@ -40,7 +40,7 @@ void Inventory::displayInventory() {
     }
 }
 
-bool Inventory::checkItem(Item* Item) {
+bool Inventory::checkItem(Item* Item) { // look in inventory for the item
     for (size_t i = 0; i < Items.size(); ++i) {
         if (Item->getItemName()== Items[i].getItemName()){
             return true;
