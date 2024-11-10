@@ -1,13 +1,13 @@
 #ifndef MERCHANT_H
 #define MERCHANT_H
 
-#include "Building.h"
+#include "City.h"
 #include "Player.h"
 #include "Potion.h"
 #include "Shield.h"
 #include "Stick.h"
 #include "Sword.h"
-class Merchant: public Building
+class Merchant: public City
 {
 protected:
     int m_merchantNbr;

@@ -46,11 +46,10 @@ void Game::Play(Player* Perso1){
         Hostel Hostel1;
         Merchant Merchant1;
         City City1;
-        Building Building1;
         City1.getRandName();
-        Mine1->setMineNbr(Building1.get_rand_number_building(1,5));
-        Merchant1.setMerchantNbr(Building1.get_rand_number_building(0,5));
-        Hostel1.setHostelNbr(Building1.get_rand_number_building(0,5));
+        Mine1->setMineNbr(getRandNumber(1,5));
+        Merchant1.setMerchantNbr(getRandNumber(0,5));
+        Hostel1.setHostelNbr(getRandNumber(0,5));
         cout<< "Number of city free : "<<cityClear<<" / 3"<<endl;
         if (cityClear == 3){
             cout<<"You freed everyone from the monsters... You are a HERO !!!"<<endl;

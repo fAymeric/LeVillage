@@ -1,10 +1,10 @@
 #ifndef HOSTEL_H
 #define HOSTEL_H
 
-#include "Building.h"
 #include "Character.h"
+#include "City.h"
 #include "Player.h"
-class Hostel: public Building
+class Hostel: public City
 {
 protected:
     int m_resetLife;

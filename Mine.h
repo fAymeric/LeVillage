@@ -1,8 +1,8 @@
 #ifndef MINE_H
 #define MINE_H
 
-#include "Building.h"
-class Mine : public Building
+#include "City.h"
+class Mine : public City
 {
 protected:
     int m_niveau;

@@ -4,7 +4,6 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        Building.cpp \
         Character.cpp \
         City.cpp \
         Equipment.cpp \
@@ -27,7 +26,6 @@ SOURCES += \
         main.cpp
 
 HEADERS += \
-    Building.h \
     Character.h \
     City.h \
     Equipment.h \
